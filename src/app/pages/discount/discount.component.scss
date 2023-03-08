@@ -1,0 +1,136 @@
+.discount {
+
+  // .discount__container
+
+  &__container {
+    padding: 50px 15px 90px 15px;
+  }
+
+  // .discount__title
+
+  &__title {
+    text-align: center;
+    margin: 0px 0px 50px 0px;
+  }
+
+  // .discount__body
+
+  &__body {}
+
+  // .discount__item
+
+  &__item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    &:not(:last-child){
+        margin: 0px 0px 30px 0px;
+    }
+
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  // .discount__image
+
+  &__image {
+    display: block;
+    width: 50%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      object-fit: contain;
+
+      @media (max-width: 768px) {
+        object-fit: cover;
+        object-position: left;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+  }
+
+  // .discount__info
+
+  &__info {
+    width: 50%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__item-title {
+    font-size: 26px;
+    line-height: 1.3em;
+    font-weight: 600;
+    color: #212721;
+    transition: all 0.4s ease 0s;
+
+    @media (min-width: 992px) {
+      &:hover {
+        color: #009246;
+      }
+
+    }
+
+  }
+
+  // .discount__text
+
+  &__text {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #636662;
+    font-weight: 400;
+    margin: 0px 0px 20px 0px;
+  }
+
+  // .discount__btn
+
+  &__btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #d22730;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1.5em;
+    transition: all 0.4s ease 0s;
+
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+      width: 0;
+      height: 4px;
+      background-color: #009246;
+      transition: all 0.4s ease 0s;
+    }
+
+    @media (min-width: 992px) {
+      &:hover {
+        color: #009246;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+  }
+}

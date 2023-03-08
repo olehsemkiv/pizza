@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+// @import 'font';
+
+
+
+
+
+// ****************** ШРИФТ ****************************
+
+// &display=swap&subset=cyrillic-ext
+// @import url();
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap&subset=cyrillic-ext");
+
+$fontFamily: 'Rubik';
+
+// ****************** ШРИФТ ****************************
+
+
+
+// ****************** ЗМІННІ ****************************
+
+$maxWidthContainer: 1320px;
+
+$md1: $maxWidthContainer+12;
+$md2: 991.98px;
+$md3: 767.98px;
+$md4: 479.98px;
+
+$texColor: #212721;
+
+$backgroundColor: #fff;
+
+$fontSize: 16px;
+
+// ****************** ЗМІННІ ****************************
+
+
+//  *******************************************
+@import '/src/app/shared/styles/reset';
+@import '/src/app/shared/styles/ui';
+
+
+html,
+body {
+  height: 100%;
+  line-height: 1;
+  font-size: $fontSize;
+  background-color: $backgroundColor;
+  color: $texColor;
+  font-family: $fontFamily;
+
+  &._lock {
+    overflow: hidden;
+  }
+}
+
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page {
+
+  flex: 1 1 auto;
+
+
+}
+
+.__container {
+  padding: 0 10px;
+  max-width: $maxWidthContainer + 10px;
+  margin: 0 auto;
+
+  @media (max-width: $md1) {
+    max-width: 970px;
+  }
+
+  @media (max-width: $md2) {
+    max-width: 750px;
+  }
+
+  @media (max-width: $md3) {
+    max-width: none;
+  }
+}
+

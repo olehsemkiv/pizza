@@ -1,0 +1,63 @@
+.faq {
+
+  // .faq__container
+
+  &__container {
+    padding: 50px 15px 90px 15px;
+    position: relative;
+  }
+
+  // .faq__spoilers
+  &__title {
+    text-align: center;
+  }
+
+  &__spoilers {
+    padding: 50px;
+
+    .accordion-button {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3rem;
+      color: #212721;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: transparent;
+      border: none;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion-body {
+      font-size: 16px;
+      line-height: 1.5em;
+      color: #636662;
+      font-weight: 400;
+    }
+
+  }
+}
+
+.discount {
+
+  // .discount__title
+
+  &__title {}
+}
+
+.decor__img {
+  position: absolute;
+
+  &_left {
+    top: 48px;
+    left: -158px;
+  }
+
+  &_right {
+    right: -122px;
+    bottom: 0;
+  }
+}
