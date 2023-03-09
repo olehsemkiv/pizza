@@ -88,15 +88,17 @@
     border-radius: 8px;
     display: inline-flex;
     justify-content: center;
+    gap: 10px;
+    
     align-items: center;
-    background-color: #ccf6d9;
-    color: #fff;
+    // background-color: #ccf6d9;
+    color: #212721;
     cursor: pointer;
     transition: background-color 0.4s ease 0s;
 
     @media (min-width: 992px) {
       &:hover {
-        background-color: #009246;
+        background-color: #D22730;
       }
     }
   }
@@ -134,7 +136,7 @@
     margin-top: 5px;
     padding: 10px;
     min-height: 66px;
-    background-color: #ccf6d9;
+    background-color: #f5faf2;
     border-radius: 10px;
     display: flex;
     align-items: center;
