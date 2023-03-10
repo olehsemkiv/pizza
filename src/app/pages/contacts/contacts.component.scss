@@ -17,6 +17,9 @@
   // .contacts__content
 
   &__content {
+    position: relative;
+    z-index: 20;
+    background-color: #fff;
     max-width: 880px;
     border: 1px solid #D1D9CE;
     border-radius: 16px;
@@ -123,6 +126,9 @@
 }
 
 .form-contacts {
+  position: relative;
+  z-index: 20;
+  background-color: #fff;
 
   // .form-contacts__title
 
@@ -235,6 +241,7 @@
 
 .decor__img {
   position: absolute;
+  z-index: 1;
 
   &_left {
     left: 0;
@@ -246,7 +253,7 @@
     right: 0;
   }
 
-  @media (max-width: 1335px) {
+  @media (max-width: 768px) {
     display: none;
   }
 

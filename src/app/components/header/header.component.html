@@ -1,29 +1,29 @@
 <header class="header">
   <div class="header__container __container">
     <div class="header__top">
-      <a href="#" class="header__logo">
+      <a [routerLink]="[ '/home' ]" routerLinkActive="active" class="header__logo">
         <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/logo-pizza-red.svg" alt="">
       </a>
 
       <nav class="header__menu menu">
         <ul class="menu__list">
           <li class="menu__item">
-            <a href="#" class="menu__link">Про нас</a>
+            <a [routerLink]="[ '/about' ]" routerLinkActive="active" class="menu__link">Про нас</a>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link">Доставка та оплата</a>
+            <a [routerLink]="[ '/delivery' ]" routerLinkActive="active" class="menu__link">Доставка та оплата</a>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link">Акції</a>
+            <a [routerLink]="[ '/discount' ]" routerLinkActive="active" class="menu__link">Акції</a>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link">Контакти</a>
+            <a [routerLink]="[ '/contacts' ]" routerLinkActive="active" class="menu__link">Контакти</a>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link">Новини</a>
+            <a [routerLink]="[ '/news' ]" routerLinkActive="active" class="menu__link">Новини</a>
           </li>
           <li class="menu__item">
-            <a href="#" class="menu__link">FAQ</a>
+            <a [routerLink]="[ '/faq' ]" routerLinkActive="active" class="menu__link">FAQ</a>
           </li>
         </ul>
       </nav>
@@ -36,9 +36,9 @@
         <img src="https://icons.veryicon.com/png/o/miscellaneous/unicons/cart-38.png" alt="">
         <span>0 грн</span>
       </div>
-      <button class="header__singin">
+      <button [routerLink]="[ '/admin' ]" routerLinkActive="active" class="header__singin">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
-        Вхід
+        
       </button>
       <div class="menu__icon"><span></span></div>
     </div>
@@ -49,22 +49,22 @@
       </div>
       <ul class="header__categories">
         <li class="header__category">
-          <a href="#" class="header__category-link">
+          <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="header__category-link">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-menu-1.svg" alt="">
             Піца</a>
         </li>
         <li class="header__category">
-          <a href="#" class="header__category-link">
+          <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="header__category-link">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-menu-2.svg" alt="">
             Салати</a>
         </li>
         <li class="header__category">
-          <a href="#" class="header__category-link">
+          <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="header__category-link">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-menu-3.svg" alt="">
             Десерти</a>
         </li>
         <li class="header__category">
-          <a href="#" class="header__category-link">
+          <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="header__category-link">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-menu-4.svg" alt="">
             Напої</a>
         </li>

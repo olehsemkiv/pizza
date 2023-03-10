@@ -31,16 +31,16 @@
           <ul class="footer__item-title">
             Меню:
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Піца</a>
+              <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="footer__item-link">Піца</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Салати</a>
+              <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="footer__item-link">Салати</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Десерти</a>
+              <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="footer__item-link">Десерти</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Напої</a>
+              <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="footer__item-link">Напої</a>
             </li>
           </ul>
         </div>
@@ -48,22 +48,23 @@
           <ul class="footer__item-title">
             Про компанію:
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Про нас</a>
+              <a [routerLink]="[ '/about' ]" routerLinkActive="active" class="footer__item-link">Про нас</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Доставка та оплата</a>
+              <a [routerLink]="[ '/delivery' ]" routerLinkActive="active" class="footer__item-link">Доставка та
+                оплата</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Акції</a>
+              <a [routerLink]="[ '/discount' ]" routerLinkActive="active" class="footer__item-link">Акції</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Контакти</a>
+              <a [routerLink]="[ '/contacts' ]" routerLinkActive="active" class="footer__item-link">Контакти</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">Новини</a>
+              <a [routerLink]="[ '/news' ]" routerLinkActive="active" class="footer__item-link">Новини</a>
             </li>
             <li class="footer__item-subtitle">
-              <a href="" class="footer__item-link">FAQ</a>
+              <a [routerLink]="[ '/faq' ]" routerLinkActive="active" class="footer__item-link">FAQ</a>
             </li>
           </ul>
         </div>
@@ -90,8 +91,9 @@
       <div class="footer__bottom-copy">©2023 MA Pizza Всі права захищено
 
       </div>
-      <a href="" class="footer__bottom-policy">Політика <br> конфіденційності</a>
-      <a href="" class="footer__bottom-oferta">Оферта</a>
+      <a [routerLink]="[ '/policy' ]" routerLinkActive="active" class="footer__bottom-policy">Політика <br>
+        конфіденційності</a>
+      <a [routerLink]="[ '/oferta' ]" routerLinkActive="active" class="footer__bottom-oferta">Оферта</a>
       <div class="footer__bottom-card">
         <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/visa-card.svg" alt="">
         <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/master-card.svg" alt="">

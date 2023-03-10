@@ -23,6 +23,17 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
 import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { PolicyComponent } from './pages/policy/policy.component';
+
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+
 
 @NgModule({
   declarations: [
@@ -46,11 +57,18 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     AdminProductComponent,
     AdminDiscountComponent,
     AdminNewsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

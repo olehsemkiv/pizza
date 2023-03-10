@@ -18,6 +18,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+      background-color: #f5faf2;
+      padding: 10px;
+    }
   }
 
   // .header__phone
@@ -89,7 +94,7 @@
     display: inline-flex;
     justify-content: center;
     gap: 10px;
-    
+
     align-items: center;
     // background-color: #ccf6d9;
     color: #212721;
@@ -100,6 +105,11 @@
       &:hover {
         background-color: #D22730;
       }
+    }
+
+    @media (max-width: 768px) {
+      padding: 6px 9px;
+
     }
   }
 
@@ -141,6 +151,16 @@
     display: flex;
     align-items: center;
     gap: 30px;
+
+    @media (max-width: 768px) {
+      background-color: #fff;
+      box-shadow: 0px 6px 4px #f5faf2;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 400px) {
+      padding: 0px;
+    }
 
   }
 
@@ -206,6 +226,16 @@
     img {
       width: 30px;
       height: 30px;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      color: rgb(5, 88, 5);
+      font-weight: 500;
     }
   }
 

@@ -1,4 +1,8 @@
 .productinfo {
+  &__title {
+    margin: 0px 0px 50px 0px;
+  }
+
   &__menu {
     margin: 20px 0;
 
@@ -54,7 +58,9 @@
   // .productinfo__menu
 
 
-  &__content {}
+  &__content {
+    margin: 0px 0px 100px 0px;
+  }
 
   // .productinfo__block
 
