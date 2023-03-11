@@ -6,23 +6,23 @@
           <a [routerLink]="[ '/home' ]" routerLinkActive="active" class="productinfo__menu-link">Піца Львів</a>
         </li>
         <li class="productinfo__menu-item">
-          <a [routerLink]="[ '/product' ]" routerLinkActive="active" class="productinfo__menu-link">Піца</a>
+          <a [routerLink]="[ '/product/' + currentProduct.category.path ]"
+            class="productinfo__menu-link">{{currentProduct.category.name}}</a>
         </li>
         <li class="productinfo__menu-item">
-          <a href="" class="productinfo__menu-link">Фунгі</a>
+          <a class="productinfo__menu-link">{{currentProduct.name}}</a>
         </li>
       </ul>
     </div>
     <div class="productinfo__content">
       <div class="productinfo__block info">
         <div class="info__img">
-          <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-700x672.jpg" alt="">
+          <img [src]="currentProduct.imagePath" alt="">
         </div>
         <div class="info__data">
-          <div class="info__price-weight"><span>229 грн</span> / 430 г</div>
-          <h2 class="info__title">Фунгі </h2>
-          <div class="info__description">Моцарела , крем сир , мікс лісових грибів (польські, білі, лисички) , печериці
-            , маслини та вершково-грибний соус</div>
+          <div class="info__price-weight"><span>{{currentProduct.price}} грн</span> / {{currentProduct.weight}}</div>
+          <h2 class="info__title">{{currentProduct.name}} </h2>
+          <div class="info__description">{{currentProduct.description}}</div>
           <div class="info__wrapper">
             <div class="info__counter">
               <!-- <span>Кількість:</span> -->

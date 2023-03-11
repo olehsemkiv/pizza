@@ -1,1 +1,62 @@
-<p>admin-news works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <form [formGroup]="newsForm" (ngSubmit)="addItem()">
+      <div class="mb-3">
+        <label class="form-label">Назва Новини</label>
+        <input formControlName="title" name="title" type="text" class="form-control">
+      </div>
+      <div class="form-floating mb-3">
+        <textarea formControlName="description" name="description" style="height: 150px;" class="form-control"
+          placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Текст Новини</label>
+      </div>
+      <ng-container *ngIf="!isUploaded">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Завантажити зображення...</label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+        </div>
+
+      </ng-container>
+      <ng-container class="mt-1" *ngIf="isUploaded">
+        <div class="d-flex justify-content-center">
+          <img class="mt-2" [src]="valueByControl('imagePath')" width="300px" alt="">
+        </div>
+
+        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Видалити</button>
+      </ng-container>
+      <button class="mt-1" [disabled]="newsForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
+        {{editStatus ? 'Зберегти' : 'Додати' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="row mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Назва</th>
+          <th scope="col">Опис</th>
+          <th scope="col">Фото</th>
+          <th scope="col">Редагувати</th>
+          <th scope="col">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let news of newsAdmin">
+          <!-- <td>{{news.id}}</td> -->
+          <td>{{news.title}}</td>
+          <td>{{news.description | slice:0:60}} <span *ngIf="news.description.length > 60">...</span></td>
+          <td>
+            <img [src]="news.imagePath" width="50" alt="">
+          </td>
+          <td> <button type="button" class="btn btn-warning mx-2" (click)="editItem(news)">Редагувати</button>
+          </td>
+          <td><button [disabled]="editStatus" type="button" class="btn btn-danger mx-2"
+              (click)="deleteItem(news)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

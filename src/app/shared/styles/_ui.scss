@@ -104,6 +104,8 @@
 
   &__info {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   // .product-elem__title
@@ -131,6 +133,8 @@
     color: #636662;
     line-height: 1.5rem;
     margin: 0px 0px 15px 0px;
+    height: 80px;
+
   }
 
   // .product-elem__wrapper

@@ -9,7 +9,7 @@
             <div class="home__carousel-info">
               <h2 class="home__carousel-title">Акція 2+1!</h2>
               <p class="home__carousel-text">Замовляй 3 піци та отримуй одну з них безкоштовно!</p>
-              <a href="" class="home__carousel-btn">замовити</a>
+              <a [routerLink]="[ '/product/pizza' ]" class="home__carousel-btn">замовити</a>
             </div>
             <div class="home__carousel-img"><img src="https://mapizza.com.ua/wp-content/uploads/2022/03/3.png"
                 class="d-block w-100" alt="..."></div>
@@ -20,7 +20,7 @@
             <div class="home__carousel-info">
               <h2 class="home__carousel-title">-15% на самовивіз!</h2>
               <p class="home__carousel-text">Забирай замовлення самостійно з наших піцерій та отримуй знижку 15%!</p>
-              <a href="" class="home__carousel-btn">замовити</a>
+              <a [routerLink]="[ '/product/pizza' ]" class="home__carousel-btn">замовити</a>
             </div>
             <div class="home__carousel-img"><img src="https://mapizza.com.ua/wp-content/uploads/2022/11/ma_banner.png"
                 class="d-block w-100" alt="..."></div>
@@ -31,7 +31,7 @@
             <div class="home__carousel-info">
               <h2 class="home__carousel-title">Середній час доставки 29 хв!</h2>
               <p class="home__carousel-text">*у жовту зону до 59 хв</p>
-              <a href="" class="home__carousel-btn">замовити</a>
+              <a [routerLink]="[ '/product/pizza' ]" class="home__carousel-btn">замовити</a>
             </div>
             <div class="home__carousel-img"><img src="https://mapizza.com.ua/wp-content/uploads/2022/03/6_2-1.png"
                 class="d-block w-100" alt="..."></div>
@@ -42,7 +42,7 @@
             <div class="home__carousel-info">
               <h2 class="home__carousel-title">Акція 3+1!</h2>
               <p class="home__carousel-text">Замовляй 3 піци та отримай 4-ту в подарунок!</p>
-              <a href="" class="home__carousel-btn">замовити</a>
+              <a [routerLink]="[ '/product/pizza' ]" class="home__carousel-btn">замовити</a>
             </div>
             <div class="home__carousel-img"><img src="https://mapizza.com.ua/wp-content/uploads/2022/03/8-1.png"
                 class="d-block w-100" alt="..."></div>
@@ -67,157 +67,20 @@
     </div>
 
     <div class="product__content">
-      <div class="product__item product-elem">
-        <a href="#">
+      <div class="product__item product-elem" *ngFor="let product of homePizza">
+        <a>
           <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
+            <img [routerLink]="[ '/product/'+product.category.path, product.id ]" [src]="product.imagePath" alt="">
           </div>
         </a>
         <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
+          <a [routerLink]="[ '/product/'+product.category.path, product.id ]"
+            class="product-elem__title">{{product.name}}</a>
+          <div class="product-elem__description">{{product.description | slice:0:80}} <span
+              *ngIf=" product.description.length > 80">...</span></div>
           <div class="product-elem__wrapper">
             <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
-            </div>
-            <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
-            </div>
-          </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
-        </div>
-      </div>
-      <div class="product__item product-elem">
-        <a href="#">
-          <div class="product-elem__img _ibg">
-            <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg" alt="">
-          </div>
-        </a>
-        <div class="product-elem__info">
-          <a href="#" class="product-elem__title">Фунгі</a>
-          <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-            перець чилі та вершковий соус </div>
-          <div class="product-elem__wrapper">
-            <div class="product-elem__price">
-              229 грн <span>/ 430 г</span>
+              {{product.price}} грн <span>/ {{product.weight}}</span>
             </div>
             <div class="product-elem__counter">
               <button class="product-elem__btn-count">-</button>
@@ -280,7 +143,7 @@
           справжню італійську піцу. Мамма готує піцу з якісних імпортних інгредієнтів на італійському борошні Caputo.
           Тоненьке тісто, хрумкі бортики, багато начинки – «кусь» і Ви в Італії!
         </div>
-        <a href="#" class="block-home__btn">дізнатися більше</a>
+        <a [routerLink]="[ '/about' ]" class="block-home__btn">дізнатися більше</a>
       </div>
       <div class="block-home__img _ibg">
         <img src="https://mapizza.com.ua/wp-content/uploads/2022/01/pizza.jpg" alt="">

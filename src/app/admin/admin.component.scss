@@ -1,0 +1,16 @@
+.admin {
+  &__container {
+    @media (max-width: 992px) {
+      flex-direction: column;
+      
+    }
+  }
+
+  &__nav {
+    @media (max-width: 992px) {
+      flex-direction: row !important;
+      margin-bottom: 60px;
+      gap: 15px;
+    }
+  }
+}

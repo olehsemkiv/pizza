@@ -20,13 +20,23 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
 import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
+import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'DiscountInfoComponent', component: DiscountInfoComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'product-info', component: ProductInfoComponent },
+  {
+    path: 'discount/:id', component: DiscountInfoComponent, resolve: {
+      discountInfo: DiscountInfoResolver
+    }
+  },
+  { path: 'product/:category', component: ProductComponent },
+  {
+    path: 'product/:category/:id', component: ProductInfoComponent, resolve: {
+      productInfo: ProductInfoResolver
+    }
+  },
   { path: 'delivery', component: DeliveryComponent },
   { path: 'about', component: AboutComponent },
   { path: 'news', component: NewsComponent },

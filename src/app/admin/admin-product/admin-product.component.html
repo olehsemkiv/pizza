@@ -1,1 +1,122 @@
-<p>admin-product works!</p>
+<div class="w-100 mt-2 container">
+  <p>
+    <!-- <a class="btn btn-primary my-3" (click)="isOpen()">
+      {{openStatus ? 'Закрити форму' : 'Відкрити форму'}}
+    </a> -->
+
+  </p>
+  <!-- <ng-container *ngIf="openStatus"> -->
+    <!-- <div class="collapse" id="collapseExample" [ngClass]="{'show': openStatus}"> -->
+      <div class="col-12">
+        <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+          <div class="mb-3">
+            <select formControlName="category" class="form-select">
+              <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
+
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Name</label>
+            <input formControlName="name" name="name" type="text" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['name'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Name обов'язкове!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Path</label>
+            <input formControlName="path" name="path" type="text" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['path'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Path обов'язкове!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Description</label>
+            <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
+              style="height: 129px"></textarea>
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Description обов'язкове!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Weight</label>
+            <input formControlName="weight" name="weight" type="text" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['weight'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Weight обов'язкове!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Price</label>
+            <input formControlName="price" name="price" type="number" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Price обов'язкове!
+            </div>
+          </div>
+          <ng-container *ngIf="!isUploaded">
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Завантажити зображення...</label>
+              <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+            </div>
+            <div class="progress mb-3">
+              <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="isUploaded">
+            <div class="d-flex justify-content-center mt-2">
+              <img [src]="valueByControl('imagePath')" width="300px" alt="">
+            </div>
+
+            <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Delete</button>
+          </ng-container>
+          <button [disabled]="productForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
+            {{editStatus ? 'Зберегти' : 'Додати' }}
+          </button>
+
+        </form>
+      </div>
+    <!-- </div> -->
+  <!-- </ng-container> -->
+
+
+  <div class="col-12 mt-5 mb-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Category</th>
+          <th scope="col">Title</th>
+          <th scope="col">Path</th>
+          <th scope="col">Description</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productsAdmin; index as i">
+          <!-- <th scope="row">{{i+1}}</th> -->
+          <td>{{product.category.name}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.path}}</td>
+          <td>{{product.description | slice:0:30}} <span *ngIf="product.description.length > 30">...</span></td>
+          <td>{{product.weight}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            <img [src]="product.imagePath" width="50" alt="">
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning mx-2" (click)="editProduct(product)">Редагувати</button>
+            <button [disabled]="editStatus" type="button" class="btn btn-danger mx-2"
+              (click)="deleteProduct(product)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

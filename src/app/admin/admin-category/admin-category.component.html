@@ -1,1 +1,61 @@
-<p>admin-category works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <form [formGroup]="categoriesForm" (ngSubmit)="addItem()">
+      <div class="mb-3">
+        <label class="form-label">Назва Категорії</label>
+        <input formControlName="name" name="name" type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Шлях Категорії</label>
+        <input formControlName="path" name="path" type="text" class="form-control">
+      </div>
+      <ng-container *ngIf="!isUploaded">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Завантажити зображення...</label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+        </div>
+
+      </ng-container>
+      <ng-container class="mt-1" *ngIf="isUploaded">
+        <div class="d-flex justify-content-center">
+          <img class="mt-2" [src]="valueByControl('imagePath')" width="300px" alt="">
+        </div>
+
+        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Видалити</button>
+      </ng-container>
+      <button class="mt-1" [disabled]="categoriesForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
+        {{editStatus ? 'Зберегти' : 'Додати' }}
+      </button>
+    </form>
+  </div>
+
+  <div class="row mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Назва</th>
+          <th scope="col">Опис</th>
+          <th scope="col">Фото</th>
+          <th scope="col">Редагувати</th>
+          <th scope="col">Видалити</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryAdmin">
+          <!-- <td>{{category.id}}</td> -->
+          <td>{{category.name}}</td>
+          <td>{{category.path }}</td>
+          <td>
+            <img [src]="category.imagePath" width="50" alt="">
+          </td>
+          <td> <button type="button" class="btn btn-warning mx-2" (click)="editItem(category)">Редагувати</button>
+          </td>
+          <td><button [disabled]="editStatus" type="button" class="btn btn-danger mx-2"
+              (click)="deleteItem(category)">Видалити</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { newsElementResponse } from 'src/app/shared/interfaces/news/news.interfaces';
+import { NewsService } from 'src/app/shared/services/news/news.service';
 
 @Component({
   selector: 'app-news',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  public userNews: Array<newsElementResponse> = [];
+
+  constructor(
+    private newsService: NewsService
+  ) { }
 
   ngOnInit(): void {
+    this.loadNews();
+  }
+
+  loadNews(): void {
+    this.newsService.getAllFirebase().subscribe(data => {
+      this.userNews = data as newsElementResponse[];
+    })
   }
 
 }

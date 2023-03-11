@@ -13,7 +13,7 @@
           <a [routerLink]="[ '/discount' ]" routerLinkActive="active" class="discountinfo__menu-link">Акції</a>
         </li>
         <li class="discountinfo__menu-item">
-          <a href="" class="discountinfo__menu-link">Акція 2+1 – з понеділка по четвер</a>
+          <a class="discountinfo__menu-link">{{ currentDiscount.title }}</a>
         </li>
       </ul>
     </div>
@@ -21,15 +21,13 @@
       <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/banner-img.jpg" alt="">
     </div>
     <div class="discountinfo__title title">
-      <span>Акція 2+1 – з понеділка по четвер
+      <span>{{ currentDiscount.title }}
         <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/title-decor.svg" alt="">
       </span>
     </div>
 
     <div class="discountinfo__description">
-      Замовляйте доставку у Mamma Italiana з понеділка по четвер та користуйтесь акцією 2+1. Отримуєте 3 піци, а платите
-      всього за дві! Знижка надається на найдешевшу з обраних піц у замовленні. Акція розповсюджується на всі піци у
-      меню. Акція 2+1 не сумується з іншими акціями та знижками і не розповсюджується на самовивіз.
+      {{ currentDiscount.description }}
     </div>
 
   </div>
