@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ICategoryElementResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
@@ -23,7 +24,8 @@ export class AdminCategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private imageService: ImageService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -49,12 +51,12 @@ export class AdminCategoryComponent implements OnInit {
     if (this.editStatus) {
       this.categoryService.updateFirebase(this.categoriesForm.value, this.editID as string).then(() => {
         this.getData();
-        // this.toastr.success('Discount Update');
+        this.toastr.success('Discount Update');
       })
     } else {
       this.categoryService.createFirebase(this.categoriesForm.value).then((data) => {
         this.getData();
-        // this.toastr.success('Discount Add');
+        this.toastr.success('Discount Add');
       })
     }
     this.categoriesForm.reset();
@@ -67,7 +69,7 @@ export class AdminCategoryComponent implements OnInit {
     if (confirm("rly delete ?")) {
       this.categoryService.deleteFirebase(category.id).then(() => {
         this.getData();
-        // this.toastr.success('Discount Delete');
+        this.toastr.success('Discount Delete');
       })
     }
   }

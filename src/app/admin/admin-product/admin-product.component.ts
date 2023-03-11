@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ICategoryElementResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
@@ -26,7 +27,8 @@ export class AdminProductComponent implements OnInit {
     private categoriesService: CategoryService,
     private productService: ProductService,
     private fb: FormBuilder,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -62,13 +64,13 @@ export class AdminProductComponent implements OnInit {
     if (this.editStatus) {
       this.productService.updateFirebase(this.productForm.value, this.editID as string).then((data) => {
         this.loadDataProducts();
-        // this.toastr.success('Product Update');
+        this.toastr.success('Product Update');
       })
     }
     else {
       this.productService.createFirebase(this.productForm.value).then((data) => {
         this.loadDataProducts();
-        // this.toastr.success('Producnt Add');
+        this.toastr.success('Producnt Add');
       })
     }
     this.productForm.reset();
@@ -101,7 +103,7 @@ export class AdminProductComponent implements OnInit {
     if (confirm('Rly delete ?')) {
       this.productService.deleteFirebase(product.id).then(() => {
         this.loadDataProducts();
-        // this.toastr.success('Product Delete');
+        this.toastr.success('Product Delete');
       })
     }
   }

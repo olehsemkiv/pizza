@@ -4,6 +4,7 @@ import { discountElementResponse } from 'src/app/shared/interfaces/discount/disc
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { Storage } from '@angular/fire/storage';
 import { DiscountService } from 'src/app/shared/services/discount/discount.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -30,7 +31,9 @@ export class AdminDiscountComponent implements OnInit {
     private fb: FormBuilder,
     private storage: Storage,
     private imageService: ImageService,
-    private discountService: DiscountService
+    private discountService: DiscountService,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
@@ -58,12 +61,12 @@ export class AdminDiscountComponent implements OnInit {
     if (this.editStatus) {
       this.discountService.updateFirebase(this.discountForm.value, this.editID as string).then(() => {
         this.getData();
-        // this.toastr.success('Discount Update');
+        this.toastr.success('Discount Update');
       })
     } else {
       this.discountService.createFirebase(this.discountForm.value).then((data) => {
         this.getData();
-        // this.toastr.success('Discount Add');
+        this.toastr.success('Discount Add');
       })
     }
     this.discountForm.reset();
@@ -76,7 +79,7 @@ export class AdminDiscountComponent implements OnInit {
     if (confirm("rly delete ?")) {
       this.discountService.deleteFirebase(discount.id).then(() => {
         this.getData();
-        // this.toastr.success('Discount Delete');
+        this.toastr.success('Discount Delete');
       })
     }
   }

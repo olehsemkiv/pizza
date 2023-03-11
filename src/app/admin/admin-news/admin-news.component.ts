@@ -4,6 +4,7 @@ import { newsElementResponse } from 'src/app/shared/interfaces/news/news.interfa
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 import { Storage } from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-news',
@@ -24,7 +25,9 @@ export class AdminNewsComponent implements OnInit {
     private fb: FormBuilder,
     private newsService: NewsService,
     private imageService: ImageService,
-    private storage: Storage
+    private storage: Storage,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
@@ -50,12 +53,12 @@ export class AdminNewsComponent implements OnInit {
     if (this.editStatus) {
       this.newsService.updateFirebase(this.newsForm.value, this.editID as string).then(() => {
         this.getData();
-        // this.toastr.success('Discount Update');
+        this.toastr.success('Discount Update');
       })
     } else {
       this.newsService.createFirebase(this.newsForm.value).then((data) => {
         this.getData();
-        // this.toastr.success('Discount Add');
+        this.toastr.success('Discount Add');
       })
     }
     this.newsForm.reset();
@@ -68,7 +71,7 @@ export class AdminNewsComponent implements OnInit {
     if (confirm("rly delete ?")) {
       this.newsService.deleteFirebase(discount.id).then(() => {
         this.getData();
-        // this.toastr.success('Discount Delete');
+        this.toastr.success('Discount Delete');
       })
     }
   }
