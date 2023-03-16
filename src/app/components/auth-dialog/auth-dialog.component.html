@@ -1,0 +1,45 @@
+<div class="auth">
+  <div class="auth__container">
+    <div class="auth__body">
+      <div class="auth__title title">
+        <span> {{registStatus ? "Реєстрація" : "Вхід"}}
+          <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/title-decor.svg" alt="">
+        </span>
+      </div>
+
+      <form *ngIf="!registStatus" class="auth__login-form" [formGroup]="authForm" (ngSubmit)="login()">
+        <input [style.border-color]="authForm.controls['email'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="email" class="auth__input" type="text" placeholder="*Введіть email">
+        <input [style.border-color]="authForm.controls['password'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="password" class="auth__input" type="password" placeholder="*Введіть пароль">
+        <button class="auth__btn-submit" type="submit" mat-dialog-close [disabled]="authForm.invalid">увійти</button>
+        <div class="auth__inner">
+          <span>Ще не зареєстровані ?</span>
+          <a class="auth__change-btn" (click)="changeRegStatus()">Зареєструватися</a>
+        </div>
+      </form>
+      <form *ngIf="registStatus" class="auth__register-form" [formGroup]="registrForm" (ngSubmit)="register()">
+        <input [style.border-color]="registrForm.controls['firstName'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="firstName" class="auth__input" type="text" placeholder="*Ваше ім'я">
+        <input [style.border-color]="registrForm.controls['lastName'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="lastName" class="auth__input" type="text" placeholder="*Ваше прізвище">
+        <input [style.border-color]="registrForm.controls['email'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="email" class="auth__input" type="text" placeholder="*Ваш email">
+        <input [style.border-color]="registrForm.controls['phoneNumber'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="phoneNumber" class="auth__input" type="text" placeholder="*Ваш телефон">
+        <input (input)="checkConfirmedPassword()" [style.border-color]="registrForm.controls['password'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="password" class="auth__input" type="password" placeholder="*Пароль">
+        <input (input)="checkConfirmedPassword()" [style.border-color]="registrForm.controls['confirmedPassword'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="confirmedPassword" class="auth__input" type="password" placeholder="*Повторіть пароль">
+          <p class="confirmedErrorAlert" *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">*Паролі не
+            співпадають</p>
+        <button class="auth__btn-submit" type="submit" mat-dialog-close
+          [disabled]="registrForm.invalid">Зареєструватись</button>
+        <div class="auth__inner">
+          <span>Вже зареєстровані?</span>
+          <a class="auth__change-btn" (click)="changeRegStatus()">Увійти</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

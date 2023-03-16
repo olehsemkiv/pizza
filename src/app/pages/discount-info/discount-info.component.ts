@@ -23,6 +23,7 @@ export class DiscountInfoComponent implements OnInit {
     this.activatedRoute.data.subscribe(response => {
       this.currentDiscount = response['discountInfo'];
     })
+    window.scrollTo(0, 0);
   }
 
 }

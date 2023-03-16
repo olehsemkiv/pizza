@@ -14,13 +14,11 @@
           <label for="formFile" class="form-label">Завантажити зображення...</label>
           <input class="form-control" type="file" id="formFile" (change)="upload($event)">
         </div>
-
       </ng-container>
       <ng-container class="mt-1" *ngIf="isUploaded">
         <div class="d-flex justify-content-center">
           <img class="mt-2" [src]="valueByControl('imagePath')" width="300px" alt="">
         </div>
-
         <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Видалити</button>
       </ng-container>
       <button class="mt-1" [disabled]="categoriesForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
@@ -28,7 +26,6 @@
       </button>
     </form>
   </div>
-
   <div class="row mt-5">
     <table class="table">
       <thead>

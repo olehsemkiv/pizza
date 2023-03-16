@@ -17,7 +17,8 @@ export class DiscountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadDiscount()
+    this.loadDiscount();
+    window.scrollTo(0, 0);
   }
 
   loadDiscount(): void {

@@ -80,15 +80,15 @@
               *ngIf=" product.description.length > 80">...</span></div>
           <div class="product-elem__wrapper">
             <div class="product-elem__price">
-              {{product.price}} грн <span>/ {{product.weight}}</span>
+              {{product.price * product.count}} грн <span>/ {{product.weight}}</span>
             </div>
             <div class="product-elem__counter">
-              <button class="product-elem__btn-count">-</button>
-              <input class="product-elem__count" type="text" value="1">
-              <button class="product-elem__btn-count">+</button>
+              <button (click)="productCount(product, false)" class="product-elem__btn-count">-</button>
+              <input class="product-elem__count" type="text" [value]="product.count" readonly>
+              <button (click)="productCount(product, true)" class="product-elem__btn-count">+</button>
             </div>
           </div>
-          <button class="product-elem__order-btn" type="button">замовити</button>
+          <button (click)="addToBasket(product)" class="product-elem__order-btn" type="button">замовити</button>
         </div>
       </div>
     </div>

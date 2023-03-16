@@ -20,6 +20,10 @@
       font-weight: 600;
       line-height: 1.3rem;
       color: #212721;
+      @media (max-width: 768px) {
+      font-size: 17px;
+        
+      }
     }
 
     .accordion-button:not(.collapsed) {
@@ -36,6 +40,10 @@
       line-height: 1.5em;
       color: #636662;
       font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+      padding: 50px 0;
     }
 
   }

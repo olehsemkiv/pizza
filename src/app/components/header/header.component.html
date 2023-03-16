@@ -5,42 +5,52 @@
         <img src="https://mapizza.com.ua/wp-content/uploads/2022/03/logo-pizza-red.svg" alt="">
       </a>
 
-      <nav class="header__menu menu">
+      <nav id="hmenu" class="header__menu menu">
+        <div class="header__delivery-time_nav">
+          <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/icons/i-header-top.svg" alt="">
+          <p><b>29 хв</b> — середній час доставки</p>
+        </div>
         <ul class="menu__list">
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/about' ]" routerLinkActive="active" class="menu__link">Про нас</a>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/delivery' ]" routerLinkActive="active" class="menu__link">Доставка та оплата</a>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/discount' ]" routerLinkActive="active" class="menu__link">Акції</a>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/contacts' ]" routerLinkActive="active" class="menu__link">Контакти</a>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/news' ]" routerLinkActive="active" class="menu__link">Новини</a>
           </li>
-          <li class="menu__item">
+          <li class="menu__item" (click)="openNavMenu()">
             <a [routerLink]="[ '/faq' ]" routerLinkActive="active" class="menu__link">FAQ</a>
           </li>
         </ul>
+        <div class="header__phone_nav">
+          <a href="tel:+380681399731">+380681399731</a>
+          <div class="header__phone-info">щодня, 9:30 − 21:30</div>
+        </div>
       </nav>
       <div class="header__delivery-time">
         <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/icons/i-header-top.svg" alt="">
         <p><b>29 хв</b> — середній час доставки</p>
       </div>
       <div class="header__cart">
-        <div class="header__cart-count">0</div>
+        <div class="header__cart-count">{{totalCount}}</div>
         <img src="https://icons.veryicon.com/png/o/miscellaneous/unicons/cart-38.png" alt="">
-        <span>0 грн</span>
+        <span>{{totalPrice}} грн</span>
       </div>
-      <button [routerLink]="[ '/admin' ]" routerLinkActive="active" class="header__singin">
+      <button *ngIf="!isLogin" (click)="openDialogAuth()" routerLinkActive="active" class="header__singin">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
-        
       </button>
-      <div class="menu__icon"><span></span></div>
+      <button *ngIf="isLogin" [routerLink]="['/'+loginUrl]" routerLinkActive="active" class="header__singin">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+      </button>
+      <div class="menu__icon" (click)="openNavMenu()"><span></span></div>
     </div>
     <div class="header__bottom">
       <div class="header__phone">

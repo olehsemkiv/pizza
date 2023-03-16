@@ -26,15 +26,15 @@
           <div class="info__wrapper">
             <div class="info__counter">
               <!-- <span>Кількість:</span> -->
-              <button class="info__btn-count">-</button>
-              <input class="info__count" type="text" value="1">
-              <button class="info__btn-count">+</button>
+              <button (click)="productCount(currentProduct, false)" class="info__btn-count">-</button>
+              <input class="info__count" type="text" [value]="currentProduct.count" readonly>
+              <button (click)="productCount(currentProduct, true)" class="info__btn-count">+</button>
             </div>
             <div class="info__total-price">
-              229 грн
+              <b>{{ currentProduct.count * currentProduct.price}} грн</b>
             </div>
           </div>
-          <button class="info__order-btn" type="button">замовити</button>
+          <button (click)="addToBasket(currentProduct)" class="info__order-btn" type="button">замовити</button>
         </div>
       </div>
     </div>

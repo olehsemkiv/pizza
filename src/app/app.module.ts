@@ -32,10 +32,22 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthComponent } from './pages/auth/auth.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+
+// ====================================================================================================================================================
+// ====================================================================================================================================================
+// ====================================================================================================================================================
+import {MatDialogModule} from '@angular/material/dialog';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+
+
+
 
 
 
@@ -63,7 +75,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminDiscountComponent,
     AdminNewsComponent,
     AdminOrdersComponent,
-    PolicyComponent
+    PolicyComponent,
+    AuthComponent,
+    CabinetComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,12 +86,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

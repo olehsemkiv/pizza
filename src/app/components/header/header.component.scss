@@ -43,6 +43,8 @@
 
     }
 
+
+
     @media (max-width: 768px) {
       display: none;
     }
@@ -70,6 +72,14 @@
     align-items: center;
     font-size: 14px;
 
+    &_nav {
+      display: none;
+
+      @media (max-width: 992px) {
+        display: flex;
+      }
+    }
+
     b {
       color: #009246;
     }
@@ -89,7 +99,7 @@
   &__singin {
     border: 2px solid #009246;
     background: transparent;
-    padding: 8px 12px;
+    padding: 4px;
     border-radius: 8px;
     display: inline-flex;
     justify-content: center;
@@ -101,14 +111,20 @@
     cursor: pointer;
     transition: background-color 0.4s ease 0s;
 
+    img {
+      max-width: 80%;
+    }
+
     @media (min-width: 992px) {
       &:hover {
-        background-color: #D22730;
+        background-color: transparent;
       }
     }
 
     @media (max-width: 768px) {
-      padding: 6px 9px;
+      padding: 3px;
+
+      
 
     }
   }
@@ -296,10 +312,10 @@
 // ****************** BURGER ICON ****************************
 
 .menu__icon {
-  z-index: 5;
+  z-index: 101;
   position: relative;
-  width: 40px;
-  height: 28px;
+  width: 30px;
+  height: 20px;
   cursor: pointer;
   display: none;
 
@@ -316,7 +332,7 @@
   height: 10%;
   width: 100%;
   transition: all 0.3s ease 0s;
-  background-color: #D22730;
+  background-color: #212721;
 }
 
 .menu__icon::before,
@@ -354,35 +370,60 @@
 @media (max-width:992px) {
   .menu {
     position: fixed;
-    top: -100%;
-    right: 0;
-    background-color: #a79f9f;
-    opacity: 0.95;
+    top: 0;
+    right: -100%;
+    background-color: #fff;
     width: 100%;
+    margin: 0 auto;
     height: 100%;
     display: flex;
     flex-direction: column;
     padding: 120px 30px 30px 30px;
-    transition: top 0.3s ease 0s;
+    transition: right 0.3s ease 0s;
     overflow: auto;
-    z-index: 5;
+    z-index: 100;
+    justify-content: flex-start;
+    gap: 40px;
 
 
     .menu__list {
       flex-direction: column;
       margin: 0;
       text-align: center;
+      gap: 0;
 
 
       .menu__item {
         margin: 20px 0px 0px 0px;
-        font-size: 35px;
+
+        a {
+          font-size: 24px;
+          line-height: 1.4em;
+          font-weight: 400;
+          color: #212721;
+        }
 
       }
     }
 
     &._active {
-      top: 0;
+      right: 0;
     }
+  }
+}
+
+.header__phone_nav {
+  display: none;
+
+  a {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5em;
+    color: #D22730;
+  }
+
+
+  @media (max-width: 992px) {
+    display: block;
   }
 }

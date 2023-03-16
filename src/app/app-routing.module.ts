@@ -22,6 +22,9 @@ import { AdminNewsComponent } from './admin/admin-news/admin-news.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
 import { DiscountInfoResolver } from './shared/services/discount/discount-info.resolver';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
+import { AuthComponent } from './pages/auth/auth.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -45,9 +48,11 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'policy', component: PolicyComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
       { path: 'category', component: AdminCategoryComponent },
       { path: 'product', component: AdminProductComponent },
       { path: 'discount', component: AdminDiscountComponent },
@@ -56,7 +61,6 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },
-
 ];
 
 @NgModule({

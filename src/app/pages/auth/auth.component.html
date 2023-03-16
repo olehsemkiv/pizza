@@ -1,0 +1,60 @@
+<section class="auth">
+  <div class="auth__container __container">
+    <div *ngIf="!registerStatus">
+      <div class="auth__title title">
+        <span>Вхід
+          <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/title-decor.svg" alt="">
+        </span>
+      </div>
+
+      <form class="w-50 m-auto mt-4" [formGroup]="authForm" (ngSubmit)="login()">
+        <div class="mb-3">
+          <label class="form-label">Email користувача</label>
+          <input formControlName="email" type="email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Пароль</label>
+          <input formControlName="password" type="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success w-100">Увійти</button>
+        <button (click)="openRegisterDialog()" type="button" class="btn btn-danger w-100 mt-2">Зареєструватися</button>
+      </form>
+    </div>
+    <div *ngIf="registerStatus">
+      <div class="auth__title title">
+        <span>Реєстрація
+          <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/title-decor.svg" alt="">
+        </span>
+      </div>
+      <form class="w-50 m-auto mt-4" [formGroup]="registrForm" (ngSubmit)="register()">
+        <div class="mb-3">
+          <label class="form-label">Email користувача</label>
+          <input formControlName="email" type="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">І'мя</label>
+          <input formControlName="firstName" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Прізвище</label>
+          <input formControlName="lastName" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Телефон</label>
+          <input formControlName="phoneNumber" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Пароль</label>
+          <input formControlName="password" type="password" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Підтвердити пароль</label>
+          <input formControlName="confirmedPassword" type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success w-100">Реєстрація</button>
+        <button (click)="openRegisterDialog()" type="button" class="btn btn-danger w-100 mt-2">Увійти</button>
+      </form>
+    </div>
+  </div>
+</section>
