@@ -1,7 +1,6 @@
 // @import 'font';
 @import 'ngx-toastr/toastr';
 
-@import '/src/app/shared/styles/_theme-material';
 
 
 
@@ -89,3 +88,5 @@ body {
     max-width: none;
   }
 }
+
+@import '/src/app/shared/styles/_theme-material';

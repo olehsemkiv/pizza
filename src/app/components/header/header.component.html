@@ -39,7 +39,7 @@
         <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/icons/i-header-top.svg" alt="">
         <p><b>29 хв</b> — середній час доставки</p>
       </div>
-      <div class="header__cart">
+      <div class="header__cart" (click)="openDialogBasket()">
         <div class="header__cart-count">{{totalCount}}</div>
         <img src="https://icons.veryicon.com/png/o/miscellaneous/unicons/cart-38.png" alt="">
         <span>{{totalPrice}} грн</span>
@@ -82,3 +82,4 @@
     </div>
   </div>
 </header>
+

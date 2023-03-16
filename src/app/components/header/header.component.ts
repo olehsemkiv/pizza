@@ -8,6 +8,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { BasketModalComponent } from '../basket-modal/basket-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -134,6 +135,11 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(AuthDialogComponent, {
       backdropClass: 'dialog-back'
     })
+  }
+  openDialogBasket(): void {
+    this.dialog.open(BasketModalComponent, {
+      autoFocus: false
+    });
   }
 }
 
