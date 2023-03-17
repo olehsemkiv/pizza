@@ -5,6 +5,7 @@ import { ICategoryElementResponse } from 'src/app/shared/interfaces/category/cat
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ProductTypeService } from 'src/app/shared/services/product-type/product-type.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class AdminProductComponent implements OnInit {
     private productService: ProductService,
     private fb: FormBuilder,
     private imageService: ImageService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private pTypeService: ProductTypeService
   ) { }
 
   ngOnInit(): void {
@@ -143,5 +145,11 @@ export class AdminProductComponent implements OnInit {
     this.openStatus = !this.openStatus;
     this.editStatus = false;
   }
+
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+
+  
 
 }

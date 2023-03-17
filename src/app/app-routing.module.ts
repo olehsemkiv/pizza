@@ -25,6 +25,7 @@ import { DiscountInfoResolver } from './shared/services/discount/discount-info.r
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -58,6 +59,7 @@ const routes: Routes = [
       { path: 'discount', component: AdminDiscountComponent },
       { path: 'news', component: AdminNewsComponent },
       { path: 'orders', component: AdminOrdersComponent },
+      { path: 'product-type', component: AdminProductTypeComponent },
       { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },

@@ -46,6 +46,7 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { BasketModalComponent } from './components/basket-modal/basket-modal.component';
+import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
 
 
 
@@ -80,7 +81,8 @@ import { BasketModalComponent } from './components/basket-modal/basket-modal.com
     AuthComponent,
     CabinetComponent,
     AuthDialogComponent,
-    BasketModalComponent
+    BasketModalComponent,
+    AdminProductTypeComponent
   ],
   imports: [
     BrowserModule,
