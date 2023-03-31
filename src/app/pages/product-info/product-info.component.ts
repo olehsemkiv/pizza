@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -17,7 +18,9 @@ export class ProductInfoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private orderService: OrdersService
+    private orderService: OrdersService,
+    private toastr: ToastrService
+
 
   ) { }
 
@@ -62,6 +65,7 @@ export class ProductInfoComponent implements OnInit {
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
+    this.toastr.success(`${product.name} - успішно додано`);
   }
 
 }

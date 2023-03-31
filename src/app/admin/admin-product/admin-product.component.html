@@ -6,80 +6,82 @@
 
   </p>
   <!-- <ng-container *ngIf="openStatus"> -->
-    <!-- <div class="collapse" id="collapseExample" [ngClass]="{'show': openStatus}"> -->
-      <div class="col-12">
-        <form [formGroup]="productForm" (ngSubmit)="addProduct()">
-          <div class="mb-3">
-            <select formControlName="category" class="form-select">
-              <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
-
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Name</label>
-            <input formControlName="name" name="name" type="text" class="form-control">
-            <div class="invalid-feedback mt-3"
-              [style.display]="productForm.controls['name'].errors?.['required'] ? 'block' : 'none' ">
-              Поле Name обов'язкове!
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Path</label>
-            <input formControlName="path" name="path" type="text" class="form-control">
-            <div class="invalid-feedback mt-3"
-              [style.display]="productForm.controls['path'].errors?.['required'] ? 'block' : 'none' ">
-              Поле Path обов'язкове!
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Description</label>
-            <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
-              style="height: 129px"></textarea>
-            <div class="invalid-feedback mt-3"
-              [style.display]="productForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
-              Поле Description обов'язкове!
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Weight</label>
-            <input formControlName="weight" name="weight" type="text" class="form-control">
-            <div class="invalid-feedback mt-3"
-              [style.display]="productForm.controls['weight'].errors?.['required'] ? 'block' : 'none' ">
-              Поле Weight обов'язкове!
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Price</label>
-            <input formControlName="price" name="price" type="number" class="form-control">
-            <div class="invalid-feedback mt-3"
-              [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
-              Поле Price обов'язкове!
-            </div>
-          </div>
-          <ng-container *ngIf="!isUploaded">
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Завантажити зображення...</label>
-              <input class="form-control" type="file" id="formFile" (change)="upload($event)">
-            </div>
-            <div class="progress mb-3">
-              <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
-                aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="isUploaded">
-            <div class="d-flex justify-content-center mt-2">
-              <img [src]="valueByControl('imagePath')" width="300px" alt="">
-            </div>
-
-            <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Delete</button>
-          </ng-container>
-          <button [disabled]="productForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
-            {{editStatus ? 'Зберегти' : 'Додати' }}
-          </button>
-
-        </form>
+  <!-- <div class="collapse" id="collapseExample" [ngClass]="{'show': openStatus}"> -->
+  <div class="col-12">
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <div class="mb-3">
+        <select formControlName="category" class="form-select">
+          <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
+        </select>
+        <select formControlName="type" class="form-select">
+          <option [ngValue]="type" *ngFor="let type of productTypeAdmin">{{type.name}}</option>
+        </select>
       </div>
-    <!-- </div> -->
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <input formControlName="name" name="name" type="text" class="form-control">
+        <div class="invalid-feedback mt-3"
+          [style.display]="productForm.controls['name'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Name обов'язкове!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Path</label>
+        <input formControlName="path" name="path" type="text" class="form-control">
+        <div class="invalid-feedback mt-3"
+          [style.display]="productForm.controls['path'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Path обов'язкове!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Description</label>
+        <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
+          style="height: 129px"></textarea>
+        <div class="invalid-feedback mt-3"
+          [style.display]="productForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Description обов'язкове!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Weight</label>
+        <input formControlName="weight" name="weight" type="text" class="form-control">
+        <div class="invalid-feedback mt-3"
+          [style.display]="productForm.controls['weight'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Weight обов'язкове!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Price</label>
+        <input formControlName="price" name="price" type="number" class="form-control">
+        <div class="invalid-feedback mt-3"
+          [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Price обов'язкове!
+        </div>
+      </div>
+      <ng-container *ngIf="!isUploaded">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Завантажити зображення...</label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+        </div>
+        <div class="progress mb-3">
+          <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isUploaded">
+        <div class="d-flex justify-content-center mt-2">
+          <img [src]="valueByControl('imagePath')" width="300px" alt="">
+        </div>
+
+        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Delete</button>
+      </ng-container>
+      <button [disabled]="productForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
+        {{editStatus ? 'Зберегти' : 'Додати' }}
+      </button>
+
+    </form>
+  </div>
+  <!-- </div> -->
   <!-- </ng-container> -->
 
 

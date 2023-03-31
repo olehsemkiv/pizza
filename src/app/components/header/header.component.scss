@@ -135,6 +135,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     img {
       width: 28px;
@@ -426,4 +427,115 @@
   @media (max-width: 992px) {
     display: block;
   }
+}
+
+
+.basket {
+
+  // .basket__body
+
+  &__body {
+    padding: 15px 15px;
+    overflow: scroll;
+    height: 400px;
+  }
+
+  // .basket__item
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0px;
+
+    border-top: 1px solid #d1d9ce;
+
+    &:last-child {
+      border-bottom: 1px solid #d1d9ce;
+
+    }
+
+  }
+
+  // .basket__item-img
+
+  &__item-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+
+  }
+
+  // .basket__item-info
+
+  &__item-info {
+
+    width: 100%;
+  }
+
+  // .basket__item-info-top
+
+  &__item-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3,
+    span {
+      font-size: 1.125rem;
+      line-height: 1.33rem;
+      font-weight: 600;
+      color: #212721;
+    }
+
+    span {
+        cursor: pointer;
+        padding: 7px;
+    }
+
+
+  }
+
+  // .basket__item-info-bot
+
+  &__item-info-bot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // .basket__item-info-price
+
+  &__item-info-price,
+  &__item-info-total-price {
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #212721;
+
+  }
+
+  // .basket__item-info-total-price
+
+  &__item-info-total-price {}
+
+  .product-elem {
+
+    // .product-elem__counter
+
+    &__counter {
+      margin: 0;
+      justify-content: center;
+    }
+
+    // .product-elem__btn-count
+
+    &__btn-count {}
+
+    // .product-elem__count
+
+    &__count {}
+  }
+
 }

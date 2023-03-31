@@ -18,7 +18,7 @@
         </div>
         <div class="contacts__info-element">
           <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/icons/icon-mail.svg" alt="">
-          <a href="mailto: semkivq.direct@gmail.com">mamaitalianopizza@gmail.com</a>
+          <a href="mailto: semkivq.direct@gmail.com">semkivq.direct@gmail.com</a>
         </div>
       </div>
       <div class="contacts__content-item">
@@ -31,13 +31,13 @@
       <div class="contacts__content-item">
         <h4 class="contacts__info-title">Соцмережі</h4>
         <div class="contacts__info-social">
-          <a href="" class="contacts__social-elem">
+          <a href="https://www.instagram.com/semkivq/?hl=en" target="_blank" class="contacts__social-elem">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-facebook.svg" alt="">
           </a>
-          <a href="" class="contacts__social-elem">
+          <a href="https://www.instagram.com/semkivq/?hl=en" target="_blank" class="contacts__social-elem">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-instagram.svg" alt="">
           </a>
-          <a href="" class="contacts__social-elem">
+          <a href="https://www.instagram.com/semkivq/?hl=en" target="_blank" class="contacts__social-elem">
             <img src="https://mapizza.com.ua/wp-content/uploads/2021/09/i-you-tube.svg" alt="">
           </a>
         </div>
@@ -45,14 +45,16 @@
     </div>
     <div class="contacts__form form-contacts">
       <h3 class="form-contacts__title">Форма зворотнього зв'язку</h3>
-      <form class="form-contacts__form">
+      <form class="form-contacts__form" [formGroup]="contactsForm" (submit)="submitContacts()">
         <div class="form-contacts__wrapper-input">
-          <input class="form-contacts__small-input" type="text" placeholder="*Ім'я">
-          <input class="form-contacts__small-input" type="text" placeholder="*Введіть номер телефону">
+          <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я">
+          <input formControlName="phone" class="form-contacts__small-input" type="text"
+            placeholder="*Введіть номер телефону">
         </div>
-        <input class="form-contacts__input" type="email" placeholder="*Email">
-        <textarea class="form-contacts__text-area" placeholder="Повідомлення..." name="" id=""></textarea>
-        <button class="form-contacts__btn" type="button">Надіслати</button>
+        <input formControlName="email" class="form-contacts__input" type="email" placeholder="*Email">
+        <textarea formControlName="message" class="form-contacts__text-area" placeholder="Повідомлення..." name=""
+          id=""></textarea>
+        <button [disabled]="contactsForm.invalid" class="form-contacts__btn" type="submit">Надіслати</button>
       </form>
     </div>
   </div>

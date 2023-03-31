@@ -1,0 +1,59 @@
+<section class="personalOrder">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Дата та час</th>
+          <th scope="col">Адреса доставки</th>
+          <th scope="col">Сума і тип оплати</th>
+          <th scope="col">Замовлення</th>
+          <th scope="col">Повторити</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let order of personalOrderList">
+
+          <td>{{order.id}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.street}}, {{order.house}}, {{order.entrance}}</td>
+          <td>{{order.totalPrice}} грн, {{order.paymentMethod}} </td>
+          <td>
+            <div class="accordion accordion-flush" id="cart">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Корзина
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#cart">
+                    <div class="accordion-body">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Фото</th>
+                            <th scope="col">Назва</th>
+                            <th scope="col">Кількість</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of order.orders">
+                            <td><img [src]="item.imagePath" [alt]="item.name" height="30px"></td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.count}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </td>
+          <td><button class="btn btn-primary" (click)="reOrder(order.orders)">Повторити</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>

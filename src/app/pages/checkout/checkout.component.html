@@ -1,1 +1,86 @@
-<p>checkout works!</p>
+<section class="checkout">
+  <div class="checkout__container __container">
+    <div class="checkout__title title">
+      <span>Оформлення замовлення
+        <img src="https://mapizza.com.ua/wp-content/themes/mamma-italiana/img/title-decor.svg" alt="">
+      </span>
+    </div>
+    <div class="checkout__wrapper">
+      <div class="checkout__basket">
+        <div class="basket__item" *ngFor="let product of basket">
+          <div class="basket__item-img _ibg">
+            <img [src]="product.imagePath" alt="">
+          </div>
+          <div class="basket__item-info">
+            <div class="basket__item-info-top">
+              <h3>{{product.name}}</h3>
+              <span (click)="deleteCartItem(product)">X</span>
+            </div>
+            <div class="basket__item-info-bot">
+              <p class="basket__item-info-price">{{product.price}} грн</p>
+              <div class="product-elem__counter">
+                <button (click)="productCount(product, false)" class="product-elem__btn-count">-</button>
+                <input class="product-elem__count" type="text" [value]="product.count" readonly>
+                <button (click)="productCount(product, true)" class="product-elem__btn-count">+</button>
+              </div>
+              <p class="basket__item-info-total-price">{{product.price * product.count}} грн</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout__content">
+        <form class="checkout__form form-check" [formGroup]="orderForm" (submit)="submitOrder()">
+          <h3 class="checkout__content-title">Контактні дані</h3>
+          <input formControlName="name" class="form-check__input form-check__input_small" type="text" name="" id=""
+            placeholder="*Ваше ім'я">
+          <input formControlName="phone" class="form-check__input form-check__input_small" type="text" name="" id=""
+            placeholder="*Ваше телефон">
+          <input formControlName="email" class="form-check__input" type="email" name="" id="" placeholder="*Ваш email*">
+          <h3 class="checkout__content-title">Інформація про доставку</h3>
+          <input class="form-check__input" type="text" name="" id="" value="Львів" readonly>
+          <input formControlName="street" class="form-check__input" type="text" name="" id=""
+            placeholder="*Ваша вулиця*">
+          <input formControlName="house"  class="form-check__input form-check__input_small"
+            type="text" name="" id="" placeholder="Будинок>">
+          <input formControlName="entrance"  class="form-check__input form-check__input_small" type="text" name="" id=""
+            placeholder="Підїзд">
+          <h3 class="checkout__content-title">Параметри оплати</h3>
+          <div class="form-check__label-cont">
+            <label for="cash">
+
+              <input formControlName="paymentMethod" type="radio" name="paymentMethod" id="cash" value="Готівка">
+              Готівка
+            </label>
+            <label for="terminal">
+
+              <input formControlName="paymentMethod" type="radio" name="paymentMethod" id="terminal" value="Термінал">
+              Оплата через термінал
+            </label>
+          </div>
+          <div class="form-check__delivery-price">
+            <p>Доставка:</p>
+            <span>грн</span>
+          </div>
+          <div class="form-check__total-price">
+            <p>Загальна вартість:</p>
+            <span>{{totalPrice}} грн</span>
+            
+          </div>
+          <div class="form-check__label-cont">
+            <label for="callback" >
+              <input formControlName="callback" type="checkbox" name="callback" id="callback" (click)="changeCallBack()">
+              Зателефонуйте мені для уточнення замовлення
+            </label>
+            <label for="comments">
+              <input type="checkbox" name="comments" id="comments">
+              Додати коментар
+            </label>
+            <textarea formControlName="message" name="" id="" class="form-check__text-area"></textarea>
+          </div>
+
+          <button [disabled]="orderForm.invalid" type="submit" class="form-check__submit">ПІДТВЕРДИТИ ЗАМОВЛЕННЯ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

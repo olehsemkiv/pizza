@@ -1,0 +1,115 @@
+.personalInfo {
+
+  // .personalInfo__container
+
+  &__container {
+    padding: 0 15px 90px 15px;
+
+    @media (max-width: 768px) {
+      padding: 0 0 90px 0;
+    }
+  }
+
+  // .personalInfo__heading
+
+  &__heading {
+    color: #212721;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 150%;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+
+    }
+  }
+
+  // .personalInfo__content
+
+  &__content {}
+
+  // .personalInfo__form
+
+  &__form {}
+}
+
+.form-personal {
+
+  &__input-wrapper {
+    display: flex;
+    gap: 15px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  // .form-personal__input
+
+  &__input {
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+
+    border: 1px solid #d1d9ce;
+    border-radius: 12px;
+    padding: 0 15px;
+    font-size: 16px;
+    height: 54px;
+    outline: none;
+    margin: 0px 0px 15px 0px;
+    transition: all 0.2s ease 0s;
+
+    &:focus {
+      border: 2px solid green;
+    }
+
+    @media (max-width: 768px) {
+      height: 40px;
+    }
+
+    // .form-personal__input_small
+
+    &_small {
+      width: 50%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    &_super-small {
+      width: 33%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  // .form-personal__submit
+
+  &__submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    padding: 12px 25px;
+    background-color: #d22730;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.4s ease 0s;
+
+    &:disabled {
+      background-color: #ce7075;
+    }
+
+    @media (min-width: 992px) {
+      &:hover {
+        background-color: green;
+      }
+    }
+  }
+}

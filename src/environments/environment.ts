@@ -11,7 +11,11 @@ export const environment = {
     authDomain: 'semkiv-pizza.firebaseapp.com',
     messagingSenderId: '122734784701',
   },
-  production: false
+  production: false,
+  TELEGRAM_KEY: {
+    url: 'https://api.telegram.org/bot6230237805:AAEHDNFus3U5u14iaaHl-BBcZEdpudpkHtk/sendMessage',
+    chatID: '-1001952516802'
+  }
 };
 
 /*

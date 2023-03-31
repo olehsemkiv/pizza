@@ -65,6 +65,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       phoneNumber: [null, Validators.required],
+      
       confirmedPassword: [null]
     })
   }
@@ -119,7 +120,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       lastName: this.registerData.lastName,
       phoneNumber: this.registerData.phoneNumber,
       address: '',
-      orders: [],
+      orders: '[]',
       role: 'USER',
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), user);

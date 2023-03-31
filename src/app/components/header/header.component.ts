@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/role.constants';
 import { ICategoryElementResponse } from 'src/app/shared/interfaces/category/category.interface';
@@ -34,7 +35,8 @@ export class HeaderComponent implements OnInit {
     private categoryService: CategoryService,
     private orderService: OrdersService,
     private accountService: AccountService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {
   }
 
@@ -137,10 +139,41 @@ export class HeaderComponent implements OnInit {
     })
   }
   openDialogBasket(): void {
-    this.dialog.open(BasketModalComponent, {
-      autoFocus: false
-    });
+    // this.dialog.open(BasketModalComponent, {
+    //   autoFocus: false
+    // });
   }
+
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+
+  productCount(product: IProductResponse, value: boolean): void {
+    if (value) {
+      ++product.count
+      localStorage.setItem('basket', JSON.stringify(this.basket))
+    }
+    else if (!value && product.count > 1) {
+      --product.count
+      localStorage.setItem('basket', JSON.stringify(this.basket))
+    }
+    this.updateBasket();
+    this.orderService.changeBasket.next(true);
+  }
+
+  deleteCartItem(product: IProductResponse): void {
+    if (this.basket.some(prod => prod.id === product.id)) {
+      const index = this.basket.findIndex(prod => prod.id === product.id);
+      this.basket.splice(index, 1);
+      console.log(this.basket);
+      localStorage.setItem('basket', JSON.stringify(this.basket))
+      this.updateBasket();
+      this.orderService.changeBasket.next(true);
+      this.toastr.info('Товар видалено ><')
+    }
+
+  }
+
 }
 
 

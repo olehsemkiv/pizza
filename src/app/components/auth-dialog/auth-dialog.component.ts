@@ -130,8 +130,10 @@ export class AuthDialogComponent implements OnInit {
       firstName: this.registerData.firstName,
       lastName: this.registerData.lastName,
       phoneNumber: this.registerData.phoneNumber,
-      address: '',
-      orders: [],
+      street: '',
+      house: '',
+      entrance: '',
+      orders: '[]',
       role: 'USER',
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), user);

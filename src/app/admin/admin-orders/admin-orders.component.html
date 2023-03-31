@@ -1,1 +1,92 @@
-<p>admin-orders works!</p>
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ім'я</th>
+        <th scope="col">телефон</th>
+        <th scope="col">Товар</th>
+        <th scope="col">Загальна сума</th>
+        <th scope="col">Повідомлення</th>
+        <th scope="col">Адреса</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Дзвінок</th>
+        <th scope="col">Статус</th>
+        <th scope="col">Дії</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of adminOrders">
+        <td>{{order.name}}</td>
+        <td>{{order.phone}}</td>
+        <td>
+          <div class="accordion accordion-flush" id="cart">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Корзина
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#cart">
+                <div class="accordion-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Фото</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Кількість</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of order.orders">
+                        <td><img [src]="item.imagePath" [alt]="item.name" height="30px"></td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.count}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>{{order.totalPrice}} грн</td>
+        <td>{{order.message | slice:0:30}}</td>
+        <td>
+          <div class="accordion accordion-flush" id="adress">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Адреса
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#adress">
+                <div class="accordion-body">
+                  {{order.street}}, {{order.house}}, {{order.entrance}},
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>{{order.date}}</td>
+        <td>
+          <img width="40px" *ngIf="order.callback"
+            src="https://free-png.ru/wp-content/uploads/2021/07/free-png.ru-3-340x340.png" alt="">
+          <img width="40px" *ngIf="!order.callback" src="https://img.freepik.com/free-icon/x-button_318-391115.jpg"
+            alt="">
+        </td>
+        <td>
+          <img *ngIf="order.status == 'waiting'" src="https://cdn-icons-png.flaticon.com/512/889/889843.png" alt="" width="40px">
+          <img *ngIf="order.status == 'confirm'" src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="" width="40px">
+          <img *ngIf="order.status == 'canceled'" src="https://cdn-icons-png.flaticon.com/512/929/929457.png" alt="" width="40px">
+        </td>
+        <td *ngIf="order.status == 'waiting'" style="display: flex; flex-direction: column;">
+          <button class="btn btn-success" (click)="confirmOrder(order, 'confirm')">Підтвердити</button>
+          <button class="btn btn-danger" (click)="confirmOrder(order, 'canceled')">Скасувати</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

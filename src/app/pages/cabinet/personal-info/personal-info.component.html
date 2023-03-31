@@ -1,0 +1,33 @@
+<section class="personalInfo">
+  <div class="personalInfo__container __container">
+    <h2 class="personalInfo__heading">Особисті дані</h2>
+    <div class="personalInfo__content">
+      <form class="personalInfo__form form-personal" [formGroup]="personalInfoForm" (submit)="changeData()">
+        <div class="form-personal__input-wrapper">
+          <input formControlName="firstName" class="form-personal__input form-personal__input_small" type="text"
+            placeholder="Ваше ім'я" readonly>
+          <input formControlName="lastName" class="form-personal__input form-personal__input_small" type="text"
+            placeholder="Ваше прізвище" readonly>
+        </div>
+        <input formControlName="bday" class="form-personal__input" type="text" placeholder="Дата народження">
+        <div class="form-personal__input-wrapper">
+          <input formControlName="email" class="form-personal__input form-personal__input_small" type="text"
+            placeholder="Ваш email" readonly>
+          <input formControlName="phoneNumber" class="form-personal__input form-personal__input_small" type="text"
+            placeholder="Ваш телефон" readonly></div>
+
+        <h2 class="personalInfo__heading">Адреса доставки</h2>
+        <div class="form-personal__input-wrapper">
+          <input formControlName="street" class="form-personal__input form-personal__input_super-small" type="text"
+            placeholder="Вулиця">
+          <input formControlName="house" class="form-personal__input form-personal__input_super-small" type="text"
+            placeholder="Будинок">
+          <input formControlName="entrance" class="form-personal__input form-personal__input_super-small" type="text"
+            placeholder="Підїзд">
+        </div>
+
+        <button class="form-personal__submit" type="submit">Зберегти зміни</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -26,6 +26,8 @@ import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
+import { PersonalInfoComponent } from './pages/cabinet/personal-info/personal-info.component';
+import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/personal-orders.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,7 +52,13 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'policy', component: PolicyComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
+  {
+    path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard], children: [
+      { path: 'personal-info', component: PersonalInfoComponent },
+      { path: 'personal-orders', component: PersonalOrdersComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'personal-info' },
+    ]
+  },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
@@ -63,6 +71,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },
+
 ];
 
 @NgModule({

@@ -1,7 +1,9 @@
 import { ICategoryElementResponse } from "../category/category.interface";
+import { IProductTypeResponse } from "./productType.interface";
 
 export interface IProductRequest {
     category: ICategoryElementResponse;
+    type: IProductTypeResponse
     name: string;
     path: string;
     description: string;

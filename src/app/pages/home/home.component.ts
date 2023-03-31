@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { IProductTypeResponse } from 'src/app/shared/interfaces/product/productType.interface';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
+import { ProductTypeService } from 'src/app/shared/services/product-type/product-type.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -12,15 +15,22 @@ export class HomeComponent implements OnInit {
 
   public homePizza: Array<IProductResponse> = [];
   public userProducts: Array<IProductResponse> = [];
+  public typesPizza: Array<IProductTypeResponse> = [];
+  public searchValue!: string;
 
   constructor(
     private productServica: ProductService,
-    private orderService: OrdersService
+    private orderService: OrdersService,
+    private pType: ProductTypeService,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
     this.loadHomePizza();
     window.scrollTo(0, 0);
+    this.loadTypes();
+
   }
 
   loadHomePizza(): void {
@@ -31,6 +41,12 @@ export class HomeComponent implements OnInit {
           this.homePizza.push(product)
         }
       }
+    })
+  }
+
+  loadTypes(): void {
+    this.pType.getAllFirebase().subscribe(data => {
+      this.typesPizza = data as IProductTypeResponse[];
     })
   }
 
@@ -60,5 +76,10 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
+    this.toastr.success(`${product.name} - успішно додано`);
+  }
+
+  pizzaFilter(value: string): void {
+    this.searchValue = value;
   }
 }

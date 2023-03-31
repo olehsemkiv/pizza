@@ -5,5 +5,5 @@ export interface IProductTypeRequest {
 }
 
 export interface IProductTypeResponse extends IProductTypeRequest {
-    id: number;
+    id: string | number;
 }

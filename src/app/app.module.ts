@@ -47,6 +47,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { BasketModalComponent } from './components/basket-modal/basket-modal.component';
 import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
+import { PizzaTypePipe } from './shared/pipes/pizza-type/pizza-type.pipe';
+import { PersonalInfoComponent } from './pages/cabinet/personal-info/personal-info.component';
+import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/personal-orders.component';
 
 
 
@@ -82,7 +85,10 @@ import { AdminProductTypeComponent } from './admin/admin-product-type/admin-prod
     CabinetComponent,
     AuthDialogComponent,
     BasketModalComponent,
-    AdminProductTypeComponent
+    AdminProductTypeComponent,
+    PizzaTypePipe,
+    PersonalInfoComponent,
+    PersonalOrdersComponent
   ],
   imports: [
     BrowserModule,

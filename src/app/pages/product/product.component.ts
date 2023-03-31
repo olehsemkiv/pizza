@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
@@ -23,7 +24,9 @@ export class ProductComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private orderService: OrdersService
+    private orderService: OrdersService,
+    private toastr: ToastrService
+
 
   ) {
     this.eventSubscription = this.router.events.subscribe(event => {
@@ -84,6 +87,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
     this.orderService.changeBasket.next(true);
+    this.toastr.success(`${product.name} - успішно додано`);
   }
 
 

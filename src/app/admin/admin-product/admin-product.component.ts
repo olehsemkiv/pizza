@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ICategoryElementResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { IProductTypeResponse } from 'src/app/shared/interfaces/product/productType.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { ProductTypeService } from 'src/app/shared/services/product-type/product-type.service';
@@ -17,6 +18,7 @@ export class AdminProductComponent implements OnInit {
 
   public productsAdmin: Array<IProductResponse> = [];
   public categoriesAdmin: Array<ICategoryElementResponse> = [];
+  public productTypeAdmin: Array<IProductTypeResponse> = [];
   public editStatus = false;
   public editID!: number | string;
   public uploadPercent!: number;
@@ -37,11 +39,16 @@ export class AdminProductComponent implements OnInit {
     this.initProductForm();
     this.loadDataCategories();
     this.loadDataProducts();
+    this.loadProductType();
+
+
+
   }
 
   initProductForm(): void {
     this.productForm = this.fb.group({
       category: [null, Validators.required],
+      type: [null],
       name: [null, Validators.required],
       path: [null, Validators.required],
       description: [null, Validators.required],
@@ -57,11 +64,19 @@ export class AdminProductComponent implements OnInit {
       this.productsAdmin = data as IProductResponse[];
     })
   }
+
   loadDataCategories(): void {
     this.categoriesService.getAllFirebase().subscribe(data => {
       this.categoriesAdmin = data as ICategoryElementResponse[];
     })
   }
+
+  loadProductType(): void {
+    this.pTypeService.getAllFirebase().subscribe(data => {
+      this.productTypeAdmin = data as IProductTypeResponse[];
+    })
+  }
+
   addProduct(): void {
     if (this.editStatus) {
       this.productService.updateFirebase(this.productForm.value, this.editID as string).then((data) => {
@@ -85,6 +100,7 @@ export class AdminProductComponent implements OnInit {
     this.openStatus = false;
   }
   editProduct(product: IProductResponse): void {
+    window.scrollTo(0,0)
     this.productForm.patchValue({
       category: product.category,
       name: product.name,
@@ -99,6 +115,7 @@ export class AdminProductComponent implements OnInit {
     this.editID = product.id;
     this.isUploaded = true;
     this.openStatus = true;
+
   }
 
   deleteProduct(product: IProductResponse): void {
@@ -150,6 +167,8 @@ export class AdminProductComponent implements OnInit {
   // ====================================================================================================================================================
   // ====================================================================================================================================================
 
-  
+  changeType(): void {
+
+  }
 
 }
