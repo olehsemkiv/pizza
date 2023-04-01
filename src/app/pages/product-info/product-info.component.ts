@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -10,25 +11,41 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   templateUrl: './product-info.component.html',
   styleUrls: ['./product-info.component.scss']
 })
-export class ProductInfoComponent implements OnInit {
+export class ProductInfoComponent implements OnInit, OnDestroy {
 
   public currentProduct!: IProductResponse;
+  public userProducts: Array<IProductResponse> = [];
+
+  private eventSubscription!: Subscription;
+
+
 
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private orderService: OrdersService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
 
 
-  ) { }
+
+  ) {
+    this.eventSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.loadProducts();
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response['productInfo'];
     })
     window.scrollTo(0, 0);
+    this.loadProducts();
+
+
   }
 
   loadproduct(): void {
@@ -66,6 +83,36 @@ export class ProductInfoComponent implements OnInit {
     product.count = 1;
     this.orderService.changeBasket.next(true);
     this.toastr.success(`${product.name} - успішно додано`);
+
+
+  }
+
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+  // ====================================================================================================================================================
+
+  loadProducts(): void {
+    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    this.productService.getAllFirebase().subscribe(data => {
+
+      let categoryProducts = data.filter(item => item['category']['path'] == categoryName);
+      this.userProducts = categoryProducts as IProductResponse[];
+
+      const idToDelete = this.currentProduct.id; // id елемента, який потрібно видалити
+      const indexToDelete = this.userProducts.findIndex((element) => element.id === idToDelete); // знайти індекс елемента з вказаним id
+      if (indexToDelete !== -1) { // перевірка, чи було знайдено елемент
+        this.userProducts.splice(indexToDelete, 1); // видалення елемента за його індексом
+      }
+    })
+
+
+  }
+
+
+
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
+
   }
 
 }

@@ -48,7 +48,7 @@
       <form class="form-contacts__form" [formGroup]="contactsForm" (submit)="submitContacts()">
         <div class="form-contacts__wrapper-input">
           <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я">
-          <input formControlName="phone" class="form-contacts__small-input" type="text"
+          <input formControlName="phone" class="form-contacts__small-input" type="number" inputmode="numeric"
             placeholder="*Введіть номер телефону">
         </div>
         <input formControlName="email" class="form-contacts__input" type="email" placeholder="*Email">

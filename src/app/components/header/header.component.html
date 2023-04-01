@@ -104,7 +104,8 @@
           </div>
           <div *ngIf="!basket.length" class="basket__body-empty">
             <h3>Кошик порожній</h3>
-            <a [routerLink]="[ '/product/pizza']" class="basket__btn" mat-dialog-close>Перейти до каталогу</a>
+            <a [routerLink]="[ '/product/pizza']" class="basket__btn" data-bs-dismiss="modal"
+            aria-label="Close">Перейти до каталогу</a>
           </div>
           <div *ngIf="basket.length" class="basket__body">
             <div class="basket__item" *ngFor="let product of basket">

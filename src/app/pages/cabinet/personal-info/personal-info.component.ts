@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
+
+
 
 @Component({
   selector: 'app-personal-info',
@@ -11,7 +13,7 @@ export class PersonalInfoComponent implements OnInit {
 
   public personalInfoForm!: FormGroup;
 
-  
+
 
   // ====================================================================================================================================================
 
@@ -19,14 +21,20 @@ export class PersonalInfoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private orderService: OrdersService
+    private orderService: OrdersService,
+  
   ) { }
 
   ngOnInit(): void {
-
+    
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+   
     this.getInfoUser();
     
-    
+
+
+
+
   }
 
   initPersonalForm(): void {
@@ -47,9 +55,11 @@ export class PersonalInfoComponent implements OnInit {
   getInfoUser(): void {
     if (localStorage.length > 0 && localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
-
-      this.initPersonalForm();
     }
+
+
+    this.initPersonalForm();
+
   }
 
   changeData(): void {
@@ -70,11 +80,9 @@ export class PersonalInfoComponent implements OnInit {
     this.orderService.updateFirebaseUserOrders(this.personalInfoForm.value, this.currentUser.uid).then(() => {
       console.log('success');
     })
-    // this.personalInfoForm.reset();
-  }
-
-  ngOnDestroy(): void {
 
   }
+
+
 
 }

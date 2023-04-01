@@ -89,6 +89,7 @@ export class AuthDialogComponent implements OnInit {
       this.toastr.error(e.message);
     })
     this.authForm.reset();
+    
   }
 
   async loginUser(email: string, password: string): Promise<void> {
@@ -97,11 +98,13 @@ export class AuthDialogComponent implements OnInit {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/cabinet']);
+        // this.router.navigate(['/cabinet']);
+        
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
       }
       this.accountService.isUserLogin$.next(true);
+      location.reload();
     }, (e) => {
       console.log(e);
     })

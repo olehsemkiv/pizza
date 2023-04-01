@@ -40,6 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
+
+
 // ====================================================================================================================================================
 // ====================================================================================================================================================
 // ====================================================================================================================================================
@@ -103,7 +105,8 @@ import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/persona
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

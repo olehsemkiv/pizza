@@ -45,103 +45,29 @@
     </div>
     <div class="productinfo__same-products">
       <div class="product__content">
-        <div class="product__item product-elem">
-          <a href="#">
+        <div class="product__item product-elem" *ngFor="let sameProd of userProducts">
+          <a  [routerLink]="[ '/product/'+sameProd.category.path, sameProd.id ]">
             <div class="product-elem__img _ibg">
-              <img
-                src="https://mapizza.com.ua/wp-content/uploads/2023/02/morshinska-voda-mineralna-negazovana-05-l-268x268.jpg"
-                alt="">
+              <img [src]="sameProd.imagePath" alt="">
             </div>
           </a>
           <div class="product-elem__info">
-            <a href="#" class="product-elem__title">Фунгі</a>
-            <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-              перець чилі та вершковий соус </div>
+            <a  [routerLink]="[ '/product/'+sameProd.category.path, sameProd.id ]" class="product-elem__title">{{sameProd.name}}</a>
+            <div class="product-elem__description">{{sameProd.description}} </div>
             <div class="product-elem__wrapper">
               <div class="product-elem__price">
-                229 грн <span>/ 430 г</span>
+                {{sameProd.price * sameProd.count}} грн <span>/ {{sameProd.weight}}</span>
               </div>
               <div class="product-elem__counter">
-                <button class="product-elem__btn-count">-</button>
-                <input class="product-elem__count" type="text" value="1">
-                <button class="product-elem__btn-count">+</button>
+                <button (click)="productCount(sameProd, false)" class="product-elem__btn-count">-</button>
+                <input class="product-elem__count" type="text" [value]="sameProd.count">
+                <button (click)="productCount(sameProd, true)" class="product-elem__btn-count">+</button>
               </div>
             </div>
-            <button class="product-elem__order-btn" type="button">замовити</button>
+            <button (click)="addToBasket(sameProd)" class="product-elem__order-btn" type="button">замовити</button>
           </div>
         </div>
-        <div class="product__item product-elem">
-          <a href="#">
-            <div class="product-elem__img _ibg">
-              <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg"
-                alt="">
-            </div>
-          </a>
-          <div class="product-elem__info">
-            <a href="#" class="product-elem__title">Фунгі</a>
-            <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-              перець чилі та вершковий соус </div>
-            <div class="product-elem__wrapper">
-              <div class="product-elem__price">
-                229 грн <span>/ 430 г</span>
-              </div>
-              <div class="product-elem__counter">
-                <button class="product-elem__btn-count">-</button>
-                <input class="product-elem__count" type="text" value="1">
-                <button class="product-elem__btn-count">+</button>
-              </div>
-            </div>
-            <button class="product-elem__order-btn" type="button">замовити</button>
-          </div>
-        </div>
-        <div class="product__item product-elem">
-          <a href="#">
-            <div class="product-elem__img _ibg">
-              <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg"
-                alt="">
-            </div>
-          </a>
-          <div class="product-elem__info">
-            <a href="#" class="product-elem__title">Фунгі</a>
-            <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-              перець чилі та вершковий соус </div>
-            <div class="product-elem__wrapper">
-              <div class="product-elem__price">
-                229 грн <span>/ 430 г</span>
-              </div>
-              <div class="product-elem__counter">
-                <button class="product-elem__btn-count">-</button>
-                <input class="product-elem__count" type="text" value="1">
-                <button class="product-elem__btn-count">+</button>
-              </div>
-            </div>
-            <button class="product-elem__order-btn" type="button">замовити</button>
-          </div>
-        </div>
-        <div class="product__item product-elem">
-          <a href="#">
-            <div class="product-elem__img _ibg">
-              <img src="https://mapizza.com.ua/wp-content/uploads/2023/02/grybna-dlya-sajtu-1-scaled-279x268.jpg"
-                alt="">
-            </div>
-          </a>
-          <div class="product-elem__info">
-            <a href="#" class="product-elem__title">Фунгі</a>
-            <div class="product-elem__description">Моцарела , мисливські ковбаски , курка , салямі чорізо , сир дорблю ,
-              перець чилі та вершковий соус </div>
-            <div class="product-elem__wrapper">
-              <div class="product-elem__price">
-                229 грн <span>/ 430 г</span>
-              </div>
-              <div class="product-elem__counter">
-                <button class="product-elem__btn-count">-</button>
-                <input class="product-elem__count" type="text" value="1">
-                <button class="product-elem__btn-count">+</button>
-              </div>
-            </div>
-            <button class="product-elem__order-btn" type="button">замовити</button>
-          </div>
-        </div>
+        
 
 
 

@@ -16,6 +16,7 @@ export class CheckoutComponent implements OnInit {
 
   public orderForm!: FormGroup;
   public callbackStatus = false;
+  public commentkStatus = false;
 
   constructor(
     private orderService: OrdersService,
@@ -92,7 +93,7 @@ export class CheckoutComponent implements OnInit {
       this.orderForm = this.fb.group({
         name: [user.firstName, Validators.required],
         phone: [user.phoneNumber, Validators.required],
-        email: [user.email, Validators.required],
+        email: [user.email, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
         street: [user.street, Validators.required],
         house: [user.house, Validators.required],
         entrance: [user.entrance, Validators.required],
@@ -108,7 +109,7 @@ export class CheckoutComponent implements OnInit {
       this.orderForm = this.fb.group({
         name: [null, Validators.required],
         phone: [null, Validators.required],
-        email: [null, Validators.required],
+        email: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
         street: [null, Validators.required],
         house: [null, Validators.required],
         entrance: [null, Validators.required],
@@ -135,6 +136,15 @@ export class CheckoutComponent implements OnInit {
 
   }
 
+  changeComment(): void {
+    if (this.commentkStatus == false) {
+      this.commentkStatus = true;
+    } else if (this.commentkStatus) {
+      this.commentkStatus = false;
+    }
+
+  }
+
   submitOrder(): void {
     this.orderService.createFirebase(this.orderForm.value);
 
@@ -157,7 +167,9 @@ export class CheckoutComponent implements OnInit {
     }
 
 
-    this.orderForm.reset();
+    localStorage.setItem('basket', '[]');
+    this.orderService.changeBasket.next(true);
+    window.scrollTo(0, 0);
   }
 
   

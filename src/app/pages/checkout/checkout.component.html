@@ -32,7 +32,7 @@
         <form class="checkout__form form-check" [formGroup]="orderForm" (submit)="submitOrder()">
           <h3 class="checkout__content-title">Контактні дані</h3>
           <input formControlName="name" class="form-check__input form-check__input_small" type="text" name="" id=""
-            placeholder="*Ваше ім'я">
+            placeholder="*Ваше ім'я"> 
           <input formControlName="phone" class="form-check__input form-check__input_small" type="text" name="" id=""
             placeholder="*Ваше телефон">
           <input formControlName="email" class="form-check__input" type="email" name="" id="" placeholder="*Ваш email*">
@@ -40,10 +40,12 @@
           <input class="form-check__input" type="text" name="" id="" value="Львів" readonly>
           <input formControlName="street" class="form-check__input" type="text" name="" id=""
             placeholder="*Ваша вулиця*">
+         <div class="row">
           <input formControlName="house"  class="form-check__input form-check__input_small"
-            type="text" name="" id="" placeholder="Будинок>">
-          <input formControlName="entrance"  class="form-check__input form-check__input_small" type="text" name="" id=""
-            placeholder="Підїзд">
+          type="text" name="" id="" placeholder="Будинок>">
+        <input formControlName="entrance"  class="form-check__input form-check__input_small" type="text" name="" id=""
+          placeholder="Підїзд">
+         </div>
           <h3 class="checkout__content-title">Параметри оплати</h3>
           <div class="form-check__label-cont">
             <label for="cash">
@@ -58,8 +60,8 @@
             </label>
           </div>
           <div class="form-check__delivery-price">
-            <p>Доставка:</p>
-            <span>грн</span>
+            <!-- <p>Доставка:</p>
+            <span>грн</span> -->
           </div>
           <div class="form-check__total-price">
             <p>Загальна вартість:</p>
@@ -72,15 +74,17 @@
               Зателефонуйте мені для уточнення замовлення
             </label>
             <label for="comments">
-              <input type="checkbox" name="comments" id="comments">
+              <input type="checkbox" name="comments" id="comments" (click)="changeComment()">
               Додати коментар
             </label>
-            <textarea formControlName="message" name="" id="" class="form-check__text-area"></textarea>
+            <textarea *ngIf="commentkStatus" formControlName="message" name="" id="" class="form-check__text-area"></textarea>
           </div>
 
+         
           <button [disabled]="orderForm.invalid" type="submit" class="form-check__submit">ПІДТВЕРДИТИ ЗАМОВЛЕННЯ</button>
         </form>
       </div>
+      
     </div>
   </div>
 </section>

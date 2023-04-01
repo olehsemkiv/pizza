@@ -4,10 +4,18 @@
       <div class="mb-3">
         <label class="form-label">Назва Акції</label>
         <input formControlName="title" name="title" type="text" class="form-control">
+        <div class="invalid-feedback mt-3"
+          [style.display]="discountForm.controls['title'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Назва обов'язкове!
+        </div>
       </div>
       <div class="form-floating mb-3">
         <textarea formControlName="description" name="description" style="height: 150px;" class="form-control"
           placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+          <div class="invalid-feedback mt-3"
+          [style.display]="discountForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Опис обов'язкове!
+        </div>
         <label for="floatingTextarea">Текст Акції</label>
       </div>
       <ng-container *ngIf="!isUploaded">

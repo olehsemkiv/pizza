@@ -8,7 +8,7 @@
   </div>
   <div *ngIf="!basket.length" class="basket__body-empty">
     <h3>Кошик порожній</h3>
-    <a [routerLink]="[ '/product/pizza']" class="basket__btn" mat-dialog-close>Перейти до каталогу</a>
+    <button [routerLink]="[ '/product/pizza']" class="basket__btn"  >Перейти до каталогу</button>
   </div>
   <div *ngIf="basket.length" class="basket__body">
     <div class="basket__item" *ngFor="let product of basket">
@@ -35,6 +35,7 @@
   </div>
   <div class="basket__footer">
     <p>Сума: {{totalPrice}} грн</p>
-    <button [routerLink]="[ '/checkout']" class="basket__btn" [disabled]="totalPrice <= 0" mat-dialog-close>оформити замовлення</button>
+    <button [routerLink]="[ '/checkout']" class="basket__btn" [disabled]="totalPrice <= 0" >оформити
+      замовлення</button>
   </div>
 </div>

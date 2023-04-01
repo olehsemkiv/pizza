@@ -10,52 +10,74 @@
   <div class="col-12">
     <form [formGroup]="productForm" (ngSubmit)="addProduct()">
       <div class="mb-3">
-        <select formControlName="category" class="form-select">
-          <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
-        </select>
-        <select formControlName="type" class="form-select">
-          <option [ngValue]="type" *ngFor="let type of productTypeAdmin">{{type.name}}</option>
-        </select>
+        <div class="row">
+          <div class="col-6">
+            <label for="exampleInputPassword1" class="form-label">Категорія</label>
+
+            <select formControlName="category" class="form-select">
+              <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
+            </select></div>
+          <div class="col-6">
+            <label for="exampleInputPassword1" class="form-label">Тип</label>
+
+            <select formControlName="type" class="form-select">
+              <option [ngValue]="type" *ngFor="let type of productTypeAdmin">{{type.name}}</option>
+            </select></div>
+        </div>
+
+
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <label for="exampleInputPassword1" class="form-label">Назва</label>
         <input formControlName="name" name="name" type="text" class="form-control">
         <div class="invalid-feedback mt-3"
           [style.display]="productForm.controls['name'].errors?.['required'] ? 'block' : 'none' ">
-          Поле Name обов'язкове!
+          Поле Назва обов'язкове!
         </div>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Path</label>
-        <input formControlName="path" name="path" type="text" class="form-control">
-        <div class="invalid-feedback mt-3"
-          [style.display]="productForm.controls['path'].errors?.['required'] ? 'block' : 'none' ">
-          Поле Path обов'язкове!
+      <div class="row">
+        <div class="col-4">
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Шлях</label>
+            <input formControlName="path" name="path" type="text" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['path'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Шлях обов'язкове!
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Вага</label>
+            <input formControlName="weight" name="weight" type="text" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['weight'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Вага обов'язкове!
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Ціна</label>
+            <input formControlName="price" name="price" type="number" class="form-control">
+            <div class="invalid-feedback mt-3"
+              [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
+              Поле Ціна обов'язкове!
+            </div>
+          </div>
         </div>
       </div>
+
+
+
+
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Description</label>
+        <label for="exampleInputPassword1" class="form-label">Опис</label>
         <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
           style="height: 129px"></textarea>
         <div class="invalid-feedback mt-3"
           [style.display]="productForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
-          Поле Description обов'язкове!
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Weight</label>
-        <input formControlName="weight" name="weight" type="text" class="form-control">
-        <div class="invalid-feedback mt-3"
-          [style.display]="productForm.controls['weight'].errors?.['required'] ? 'block' : 'none' ">
-          Поле Weight обов'язкове!
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Price</label>
-        <input formControlName="price" name="price" type="number" class="form-control">
-        <div class="invalid-feedback mt-3"
-          [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
-          Поле Price обов'язкове!
+          Поле Опис обов'язкове!
         </div>
       </div>
       <ng-container *ngIf="!isUploaded">
@@ -90,14 +112,13 @@
       <thead>
         <tr>
           <!-- <th scope="col">#</th> -->
-          <th scope="col">Category</th>
-          <th scope="col">Title</th>
-          <th scope="col">Path</th>
-          <th scope="col">Description</th>
-          <th scope="col">Weight</th>
-          <th scope="col">Price</th>
-          <th scope="col">Image</th>
-          <th scope="col">Actions</th>
+          <th scope="col">Категорія</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Опис</th>
+          <th scope="col">Вага</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Зображення</th>
+          <th scope="col">Дії</th>
         </tr>
       </thead>
       <tbody>
@@ -105,7 +126,6 @@
           <!-- <th scope="row">{{i+1}}</th> -->
           <td>{{product.category.name}}</td>
           <td>{{product.name}}</td>
-          <td>{{product.path}}</td>
           <td>{{product.description | slice:0:30}} <span *ngIf="product.description.length > 30">...</span></td>
           <td>{{product.weight}}</td>
           <td>{{product.price}}</td>
