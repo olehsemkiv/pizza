@@ -28,6 +28,7 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { AdminProductTypeComponent } from './admin/admin-product-type/admin-product-type.component';
 import { PersonalInfoComponent } from './pages/cabinet/personal-info/personal-info.component';
 import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/personal-orders.component';
+import { SuccessOrderComponent } from './pages/success-order/success-order.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'policy', component: PolicyComponent },
   { path: 'auth', component: AuthComponent },
+  { path: 'success-order', component: SuccessOrderComponent },
   {
     path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard], children: [
       { path: 'personal-info', component: PersonalInfoComponent },

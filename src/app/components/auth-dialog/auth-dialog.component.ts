@@ -84,7 +84,7 @@ export class AuthDialogComponent implements OnInit {
   login(): void {
     const { email, password } = this.authForm.value;
     this.loginUser(email, password).then(() => {
-      this.toastr.success('admin Login');
+      this.toastr.success('Вхід виконано');
     }).catch(e => {
       this.toastr.error(e.message);
     })
@@ -119,7 +119,7 @@ export class AuthDialogComponent implements OnInit {
     const { email, password } = this.registrForm.value;
     this.registerData = this.registrForm.value;
     this.emailSignUp(email, password).then(() => {
-      this.toastr.success('User Registr');
+      this.toastr.success('Успішна реєстрація');
     }).catch(e => {
       this.toastr.error(e.message);
     })

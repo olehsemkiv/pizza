@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
 
@@ -20,7 +22,9 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private orderService: OrdersService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -146,7 +150,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   submitOrder(): void {
-    this.orderService.createFirebase(this.orderForm.value);
+    this.orderService.createFirebase(this.orderForm.value).then(() => {
+      console.log('work');
+
+    })
 
 
 
@@ -170,7 +177,9 @@ export class CheckoutComponent implements OnInit {
     localStorage.setItem('basket', '[]');
     this.orderService.changeBasket.next(true);
     window.scrollTo(0, 0);
+    this.toastr.success('Замовлення успішно відправлено')
+    this.router.navigate(['success-order']);
   }
 
-  
+
 }

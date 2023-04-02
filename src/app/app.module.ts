@@ -52,6 +52,7 @@ import { AdminProductTypeComponent } from './admin/admin-product-type/admin-prod
 import { PizzaTypePipe } from './shared/pipes/pizza-type/pizza-type.pipe';
 import { PersonalInfoComponent } from './pages/cabinet/personal-info/personal-info.component';
 import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/personal-orders.component';
+import { SuccessOrderComponent } from './pages/success-order/success-order.component';
 
 
 
@@ -90,7 +91,8 @@ import { PersonalOrdersComponent } from './pages/cabinet/personal-orders/persona
     AdminProductTypeComponent,
     PizzaTypePipe,
     PersonalInfoComponent,
-    PersonalOrdersComponent
+    PersonalOrdersComponent,
+    SuccessOrderComponent
   ],
   imports: [
     BrowserModule,
