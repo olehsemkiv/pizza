@@ -36,8 +36,7 @@ export class ContactsComponent implements OnInit {
   }
 
   submitContacts(): void {
-    console.log(this.contactsForm.value);
-
+  
     const text = `
     ===
     Ім'я: ${this.contactsForm.value.name};
@@ -49,8 +48,6 @@ export class ContactsComponent implements OnInit {
     Повідомлення: ${this.contactsForm.value.message};
     ===
     `;
-
-
 
     const params = { chat_id: this.chatID, text };
 

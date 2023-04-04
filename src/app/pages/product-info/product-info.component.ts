@@ -34,6 +34,7 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.loadProducts();
+        window.scrollTo(0,0)
       }
     })
   }
@@ -104,8 +105,6 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
         this.userProducts.splice(indexToDelete, 1); // видалення елемента за його індексом
       }
     })
-
-
   }
 
 
