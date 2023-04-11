@@ -150,35 +150,39 @@ export class CheckoutComponent implements OnInit {
   }
 
   submitOrder(): void {
-    this.orderService.createFirebase(this.orderForm.value).then(() => {
-      console.log('work');
 
-    })
+    if (confirm('Підтвердити замовлення')) {
 
-
-
-    if (localStorage.length > 0 && localStorage.getItem('currentUser')) {
-
-      const user = JSON.parse(localStorage.getItem('currentUser') as string);
-
-      let currentUserOrderList = JSON.parse(user.orders);
-      currentUserOrderList.push(this.orderForm.value)
-      console.log(currentUserOrderList);
-      user.orders = JSON.stringify(currentUserOrderList);
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.orderService.updateFirebaseUserOrders(user, user.uid).then(() => {
-        console.log('success order');
+      this.orderService.createFirebase(this.orderForm.value).then(() => {
+        console.log('work');
 
       })
 
+
+
+      if (localStorage.length > 0 && localStorage.getItem('currentUser')) {
+
+        const user = JSON.parse(localStorage.getItem('currentUser') as string);
+
+        let currentUserOrderList = JSON.parse(user.orders);
+        currentUserOrderList.push(this.orderForm.value)
+        console.log(currentUserOrderList);
+        user.orders = JSON.stringify(currentUserOrderList);
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.orderService.updateFirebaseUserOrders(user, user.uid).then(() => {
+          console.log('success order');
+
+        })
+
+      }
+
+
+      localStorage.setItem('basket', '[]');
+      this.orderService.changeBasket.next(true);
+      window.scrollTo(0, 0);
+      this.toastr.success('Замовлення успішно відправлено')
+      this.router.navigate(['success-order']);
     }
-
-
-    localStorage.setItem('basket', '[]');
-    this.orderService.changeBasket.next(true);
-    window.scrollTo(0, 0);
-    this.toastr.success('Замовлення успішно відправлено')
-    this.router.navigate(['success-order']);
   }
 
 

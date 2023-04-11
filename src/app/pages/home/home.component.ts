@@ -41,12 +41,15 @@ export class HomeComponent implements OnInit {
           this.homePizza.push(product)
         }
       }
+      console.log(this.homePizza);
     })
   }
 
   loadTypes(): void {
     this.pType.getAllFirebase().subscribe(data => {
       this.typesPizza = data as IProductTypeResponse[];
+      
+      
     })
   }
 

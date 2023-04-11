@@ -18,7 +18,7 @@
               <option [ngValue]="category" *ngFor="let category of categoriesAdmin">{{category.name}}</option>
             </select></div>
           <div class="col-6">
-            <label for="exampleInputPassword1" class="form-label">Тип</label>
+            <label for="exampleInputPassword1" class="form-label">Тип (поле тільки для піци)</label>
 
             <select formControlName="type" class="form-select">
               <option [ngValue]="type" *ngFor="let type of productTypeAdmin">{{type.name}}</option>
@@ -59,7 +59,7 @@
         <div class="col-4">
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Ціна</label>
-            <input formControlName="price" name="price" type="number" class="form-control">
+            <input formControlName="price" name="price" type="number" class="form-control" min="1">
             <div class="invalid-feedback mt-3"
               [style.display]="productForm.controls['price'].errors?.['required'] ? 'block' : 'none' ">
               Поле Ціна обов'язкове!
@@ -95,7 +95,7 @@
           <img [src]="valueByControl('imagePath')" width="300px" alt="">
         </div>
 
-        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Delete</button>
+        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Видалити</button>
       </ng-container>
       <button [disabled]="productForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
         {{editStatus ? 'Зберегти' : 'Додати' }}

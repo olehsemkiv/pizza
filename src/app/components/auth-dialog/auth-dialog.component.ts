@@ -66,18 +66,18 @@ export class AuthDialogComponent implements OnInit {
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required],
+      email: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
     })
   }
   initRegisterForm(): void {
     this.registrForm = this.fb.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required],
+      email: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       phoneNumber: [null, Validators.required],
-      confirmedPassword: [null]
+      confirmedPassword: [null, [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -89,7 +89,7 @@ export class AuthDialogComponent implements OnInit {
       this.toastr.error(e.message);
     })
     this.authForm.reset();
-    
+
   }
 
   async loginUser(email: string, password: string): Promise<void> {
@@ -99,9 +99,9 @@ export class AuthDialogComponent implements OnInit {
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
         // this.router.navigate(['/cabinet']);
-        
+
       } else if (user && user['role'] === ROLE.ADMIN) {
-        this.router.navigate(['/admin']);
+        // this.router.navigate(['/admin']);
       }
       this.accountService.isUserLogin$.next(true);
       location.reload();

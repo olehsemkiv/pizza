@@ -13,7 +13,7 @@
         <div class="discount__info">
           <a [routerLink]="[ '/discount', discount.id ]" 
             class="discount__item-title">{{discount.title}}</a>
-          <p class="discount__text">{{discount.description}}</p>
+          <p class="discount__text">{{discount.description | slice:0:200}} <span *ngIf="discount.description.length > 200">...</span></p>
           <a [routerLink]="[ '/discount', discount.id  ]" class="discount__btn">ДІЗНАТИСЬ
             БІЛЬШЕ</a>
         </div>

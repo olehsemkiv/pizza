@@ -47,9 +47,9 @@
       <h3 class="form-contacts__title">Форма зворотнього зв'язку</h3>
       <form class="form-contacts__form" [formGroup]="contactsForm" (submit)="submitContacts()">
         <div class="form-contacts__wrapper-input">
-          <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я">
-          <input formControlName="phone" class="form-contacts__small-input" type="number" inputmode="numeric"
-            placeholder="*Введіть номер телефону">
+          <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я" pattern="^[^0-9]*$">
+          <input formControlName="phone" class="form-contacts__small-input" type="text" inputmode="numeric"
+            placeholder="*Введіть номер телефону" pattern="^\+380\d{9}$">
         </div>
         <input formControlName="email" class="form-contacts__input" type="email" placeholder="*Email">
         <textarea formControlName="message" class="form-contacts__text-area" placeholder="Повідомлення..." name=""

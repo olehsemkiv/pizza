@@ -109,6 +109,7 @@ export class AdminProductComponent implements OnInit {
       weight: product.weight,
       price: product.price,
       imagePath: product.imagePath,
+      type: product.type
 
     })
     this.editStatus = true;

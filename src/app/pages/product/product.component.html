@@ -16,8 +16,11 @@
           </div>
         </a>
         <div class="product-elem__info">
-          <a [routerLink]="[ '/product/'+product.category.path, product.id ]"
-            class="product-elem__title">{{product.name}}</a>
+          <a [routerLink]="[ '/product/'+product.category.path, product.id ]" class="product-elem__title">
+            <span>{{product.name}}</span>
+            <!-- <img [src]="product.type.imagePath" alt=""> -->
+          </a>
+
           <!-- <p>{{product.category.path}}</p> -->
           <div class="product-elem__description">{{product.description | slice:0:80}} <span
               *ngIf=" product.description.length > 80">...</span></div>

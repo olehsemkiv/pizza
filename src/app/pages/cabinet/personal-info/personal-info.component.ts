@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { OrdersService } from 'src/app/shared/services/orders/orders.service';
 
 
@@ -22,6 +23,7 @@ export class PersonalInfoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private orderService: OrdersService,
+    private toastr: ToastrService
   
   ) { }
 
@@ -78,7 +80,7 @@ export class PersonalInfoComponent implements OnInit {
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
 
     this.orderService.updateFirebaseUserOrders(this.personalInfoForm.value, this.currentUser.uid).then(() => {
-      console.log('success');
+     this.toastr.success('Дані оновлено')
     })
 
   }
