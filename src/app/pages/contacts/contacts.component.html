@@ -47,13 +47,34 @@
       <h3 class="form-contacts__title">Форма зворотнього зв'язку</h3>
       <form class="form-contacts__form" [formGroup]="contactsForm" (submit)="submitContacts()">
         <div class="form-contacts__wrapper-input">
-          <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я" pattern="^[^0-9]*$">
-          <input formControlName="phone" class="form-contacts__small-input" type="text" inputmode="numeric"
-            placeholder="*Введіть номер телефону" pattern="^\+380\d{9}$">
+          <div class="wrapper_for_form-contacts__small-input">
+            <input formControlName="name" class="form-contacts__small-input" type="text" placeholder="*Ім'я"
+              pattern="^[^0-9]*$">
+            <div class="invalid-feedback"
+              [style.display]="contactsForm.controls['name'].errors?.['pattern'] ? 'block' : 'none' ">
+              Не вірний формат
+            </div>
+          </div>
+          <div class="wrapper_for_form-contacts__small-input">
+            <input formControlName="phone" class="form-contacts__small-input" type="text" inputmode="numeric"
+              placeholder="*Введіть номер телефону" pattern="^\+380\d{9}$">
+            <div class="invalid-feedback"
+              [style.display]="contactsForm.controls['phone'].errors?.['pattern'] ? 'block' : 'none' ">
+              Правильний формат +380987766555!
+            </div>
+          </div>
         </div>
         <input formControlName="email" class="form-contacts__input" type="email" placeholder="*Email">
+        <div class="invalid-feedback"
+          [style.display]="contactsForm.controls['email'].errors?.['pattern'] ? 'block' : 'none' ">
+          Не вірний формат
+        </div>
         <textarea formControlName="message" class="form-contacts__text-area" placeholder="Повідомлення..." name=""
           id=""></textarea>
+        <div class="invalid-feedback"
+          [style.display]="contactsForm.controls['name'].errors?.['required'] ? 'block' : 'none' ">
+          Обов'язкове поле
+        </div>
         <button [disabled]="contactsForm.invalid" class="form-contacts__btn" type="submit">Надіслати</button>
       </form>
     </div>

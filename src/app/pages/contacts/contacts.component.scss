@@ -123,6 +123,10 @@
     box-shadow: 13px 13px 5px #ccf6d9;
 
   }
+
+  .invalid-feedback{
+    margin-bottom: 15px;
+  }
 }
 
 .form-contacts {
@@ -154,7 +158,7 @@
   // .form-contacts__small-input
 
   &__small-input {
-    width: 50%;
+    width: 100%;
     border: 1px solid #d1d9ce;
     border-radius: 12px;
     padding: 0 15px;
@@ -266,4 +270,8 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.wrapper_for_form-contacts__small-input{
+  width: 100%;
 }

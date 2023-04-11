@@ -10,8 +10,13 @@
       <form *ngIf="!registStatus" class="auth__login-form" [formGroup]="authForm" (ngSubmit)="login()">
         <input [style.border-color]="authForm.controls['email'].errors?.['required'] ? 'red' : 'green' "
           formControlName="email" class="auth__input" type="text" placeholder="*Введіть email">
+        <div class="invalid-feedback"
+          [style.display]="authForm.controls['email'].errors?.['pattern'] ? 'block' : 'none' ">
+          Невірний формат
+        </div>
         <input [style.border-color]="authForm.controls['password'].errors?.['required'] ? 'red' : 'green' "
           formControlName="password" class="auth__input" type="password" placeholder="*Введіть пароль">
+
         <button class="auth__btn-submit" type="submit" mat-dialog-close [disabled]="authForm.invalid">увійти</button>
         <div class="auth__inner">
           <span>Ще не зареєстровані ?</span>
@@ -21,18 +26,37 @@
       <form *ngIf="registStatus" class="auth__register-form" [formGroup]="registrForm" (ngSubmit)="register()">
         <input [style.border-color]="registrForm.controls['firstName'].errors?.['required'] ? 'red' : 'green' "
           formControlName="firstName" class="auth__input" type="text" placeholder="*Ваше ім'я" pattern="^[^0-9]*$">
+        <div class="invalid-feedback"
+          [style.display]="registrForm.controls['firstName'].errors?.['pattern'] ? 'block' : 'none' ">
+          Невірний формат
+        </div>
         <input [style.border-color]="registrForm.controls['lastName'].errors?.['required'] ? 'red' : 'green' "
           formControlName="lastName" class="auth__input" type="text" placeholder="*Ваше прізвище" pattern="^[^0-9]*$">
+        <div class="invalid-feedback"
+          [style.display]="registrForm.controls['lastName'].errors?.['pattern'] ? 'block' : 'none' ">
+          Невірний формат
+        </div>
         <input [style.border-color]="registrForm.controls['email'].errors?.['required'] ? 'red' : 'green' "
           formControlName="email" class="auth__input" type="text" placeholder="*Ваш email">
+        <div class="invalid-feedback"
+          [style.display]="registrForm.controls['email'].errors?.['pattern'] ? 'block' : 'none' ">
+          Невірний формат
+        </div>
         <input [style.border-color]="registrForm.controls['phoneNumber'].errors?.['required'] ? 'red' : 'green' "
-          formControlName="phoneNumber" class="auth__input" type="text" placeholder="*Ваш телефон" pattern="^\+380\d{9}$">
-        <input (input)="checkConfirmedPassword()" [style.border-color]="registrForm.controls['password'].errors?.['required'] ? 'red' : 'green' "
+          formControlName="phoneNumber" class="auth__input" type="text" placeholder="*Ваш телефон"
+          pattern="^\+380\d{9}$">
+        <div class="invalid-feedback"
+          [style.display]="registrForm.controls['phoneNumber'].errors?.['pattern'] ? 'block' : 'none' ">
+          Невірний формат (+380687754322)
+        </div>
+        <input (input)="checkConfirmedPassword()"
+          [style.border-color]="registrForm.controls['password'].errors?.['required'] ? 'red' : 'green' "
           formControlName="password" class="auth__input" type="password" placeholder="*Пароль">
-        <input (input)="checkConfirmedPassword()" [style.border-color]="registrForm.controls['confirmedPassword'].errors?.['required'] ? 'red' : 'green' "
+        <input (input)="checkConfirmedPassword()"
+          [style.border-color]="registrForm.controls['confirmedPassword'].errors?.['required'] ? 'red' : 'green' "
           formControlName="confirmedPassword" class="auth__input" type="password" placeholder="*Повторіть пароль">
-          <p class="confirmedErrorAlert" *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">*Паролі не
-            співпадають</p>
+        <p class="confirmedErrorAlert" *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">*Паролі не
+          співпадають</p>
         <button class="auth__btn-submit" type="submit" mat-dialog-close
           [disabled]="registrForm.invalid">Зареєструватись</button>
         <div class="auth__inner">
